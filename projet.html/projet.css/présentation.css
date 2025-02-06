@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(183, 172, 172); 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+   
+
+}
+ul {
+    display: flex; 
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+ul li {
+    margin-right: 10px;
+}
+
+ul li a {
+    background-color: rgb(128, 83, 83);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+ul li a:hover {
+    background-color: #555;
+}
+h1 {
+    font-size: 2.5rem;
+    color:rgb(120, 101, 101);
+}
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.container {
+    display: flex;
+    justify-content:center ;
+    align-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    
+}
+.trip {
+    background-color: white;
+    padding: 20px;
+    width: 25%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.trip img {
+    width: 50%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.trip h4 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.trip p {
+    font-size: 1rem;
+    color:grey;
+}
