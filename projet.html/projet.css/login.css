@@ -1,0 +1,14 @@
+div.container{
+    display :flex;
+    flex-wrap: wrap;
+    flex-direction : row;
+    justify-content: space-evenly;
+}
+
+.button{
+    background-color: rgb(183, 172, 172);
+}
+
+.fill{
+    background-color: rgb(183, 172, 172);
+}
