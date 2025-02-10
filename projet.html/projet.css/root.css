@@ -41,13 +41,19 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.container {
+
+div.container {
     display: flex;
-    justify-content:center ;
-    align-content: center;
-    gap: 10px;
+    flex-direction: row;
     flex-wrap: wrap;
-    
+    justify-content: space-evenly;
+    width: 300px;
+}
+div.contained{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .trip {
     background-color: white;
