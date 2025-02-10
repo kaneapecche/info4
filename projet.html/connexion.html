@@ -9,25 +9,31 @@
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="button">
-    <ul>
-        <li><a href="accueil.html">Accueil</a></li>
-        <li><a href="presentation.html">Destination</a></li>
-        <li><a href="connexion.html">Connexion</a></li>
-        <li><a href="inscription.html">Inscription</a></li>
-     </ul>
-     </div>
+    <div class="navigation">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <div class="menu">
+        <ul>
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="presentation.html">Destination</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+        </ul>
+        </div>
+    </div>
     <br>
-  <div class="container"><fieldset>
-      <legend>Connexion</legend>
-      <form action="https://www.cafe-it.fr/cytech/post.php" method="post">
-          <label for="email">Adresse e-mail:</label>
-          <input class="fill" type="email" name="email">
-          <label for="password">Mot de passe:</label>
-          <input class="fill" type="password" name="password">
-          <br>
-          <input class="button" type="submit" value="sign in">
-      </form>
-  </fieldset></div>
+    <div class="container">
+        <fieldset>
+        <legend>Connexion</legend>
+        <form action="https://www.cafe-it.fr/cytech/post.php" method="post">
+            <label for="email">Adresse e-mail:</label>
+            <input class="fill" type="email" name="email">
+            <br>
+            <label for="password">Mot de passe:</label>
+            <input class="fill" type="password" name="password">
+            <br>
+            <input class="button" type="submit" value="sign in">
+        </form>
+        </fieldset>
+    </div>
 </body>
 </html>
