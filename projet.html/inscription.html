@@ -4,11 +4,18 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
+   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 </head>
 <body>
+    <ul class="button">
+        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="destination.html">Destination</a></li>
+        <li><a href="connexion.html">Connexion</a></li>
+        <li><a href="inscription.html">Inscription</a></li>
+     </ul>
    <fieldset>
        <legend>Inscription</legend>
-       <form>
+       <form action="https://www.cafe-it.fr/cytech/post.php" method="post" >
            <label for="nom">Nom:</label>
            <input type="text" name="nom">
            <label for="prenom">Prenom:</label>
@@ -18,7 +25,7 @@
            <input type="email" name="email">
            <br>
            <label for="birthday">Date de naissance</label>
-           <input type="date" name="birthday" value="20243-06-03">
+           <input type="date" name="birthday" value="2023-06-03">
            <label for="sexe">Genre</label>
            <input type="radio" name="sexe" value="femme" checked="checked">Femme
            <input type="radio" name="sexe" value="homme">Homme
@@ -28,6 +35,8 @@
            <br>
            <label for="password">Mot de passe</label>
            <input type="password" name="password">
+           <br>
+           <input type="submit" value="s'inscrire"
           <ul>
 <li><a href="profil.html">inscription et direction votre le profil</a></li>
        </ul>
