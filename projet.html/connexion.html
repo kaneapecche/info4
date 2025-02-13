@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SereniTrip</title>
-  <link rel="shortcut icon" href="image/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <link rel="stylesheet" href="projet.css/root.css">
   <link rel="stylesheet" href="projet.css/login.css">
 </head>
@@ -16,7 +16,6 @@
             <li><a href="accueil.html">Accueil</a></li>
             <li><a href="présentation.html">Destination</a></li>
             <li><a href="connexion.html">Connexion</a></li>
-            <li><a href="inscription.html">Inscription</a></li>
         </ul>
         </div>
     </div>
@@ -27,16 +26,19 @@
         <form action="https://www.cafe-it.fr/cytech/post.php" method="post">
             <label for="email">Adresse e-mail:</label>
             <input class="fill" type="email" name="email">
-            <br><br>
+            <br>
             <label for="password">Mot de passe:</label>
             <input class="fill" type="password" name="password">
-            <br><br>
+            <br>
+            <input class="button" type="submit" value="sign in">
         </form>
-
-        <ul class="center-list">
-          <li><a href="profil.html">Sign in</a></li>
-        </ul>
         </fieldset>
     </div>
+    <br>
+    <div class="sign_in">
+        Je ne suis pas inscris: 
+        <a href="inscription.html" class="button">S'inscrire</a>
+    </div>
+    
 </body>
 </html>
