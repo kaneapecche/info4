@@ -48,6 +48,7 @@ div.container {
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 300px;
+    border: black;
 }
 div.contained{
     display: flex;
