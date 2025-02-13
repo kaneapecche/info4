@@ -4,26 +4,47 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
-   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-   <link rel="stylesheet" href="root.css">
+   <link rel="stylesheet" href="projet.css/root.css">
+   <link rel="stylesheet" href="projet.css/login.css">
 </head>
 <body>
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
             <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="presentation.html">Destination</a></li>
+            <li><a href="présentation.html">Destination</a></li>
             <li><a href="connexion.html">Connexion</a></li>
             <li><a href="inscription.html">Inscription</a></li>
         </ul>
         </div>
     </div>
-   <h3>Votre profil</h3>
-   <ul>
-       <li>Nom:</li>
-       <li>Prenom:</li>
-       <li>Adresse e-mail</li>
-   </ul>
+    <br>
+   <div class="container"><fieldset>
+       <legend>Profil</legend>
+       <form action="https://www.cafe-it.fr/cytech/post.php" method="post" >
+           <label for="nom">Nom:</label><input type="text" id="nom" value="Le Breton" disabled>
+           <input class="fill" type="text" name="nom">
+           <label for="prenom">Prenom:</label>
+           <input class="fill" type="text" name="nom">
+           <br>
+           <label for="email">Adresse e-mail</label>
+           <input class="fill" type="email" name="email">
+           <br>
+           <label for="birthday">Date de naissance</label>
+           <input type="date" name="birthday" value="2023-06-03">
+           <label for="sexe">Genre</label>
+           <input type="radio" name="sexe" value="femme" checked="checked">Femme
+           <input type="radio" name="sexe" value="homme">Homme
+           <br>
+           <label for="phone">Téléphone</label>
+           <input class="fill" type="tel" name="phone">
+           <br>
+           <label for="password">Mot de passe</label>
+           <input class="fill" type="password" name="password">
+           <br>
+           <input class="button" type="submit" value="Modifier">
+       </form>
+   </fieldset></div>
 </body>
 </html>
