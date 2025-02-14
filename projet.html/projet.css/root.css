@@ -79,3 +79,31 @@ div.contained{
     font-size: 1rem;
     color:grey;
 }
+
+.tab{
+    padding-top: 30px;
+    table-layout: fixed;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    border-collapse: collapse; 
+}
+
+table{
+    margin-top: auto;
+    width: 95%;
+}
+  
+th, td {
+    border: 1px solid #ddd; /* Ajoute une bordure fine et grise */
+    padding: 8px; /* Ajoute de l'espace à l'intérieur des cellules */
+    text-align: left; /* Aligne le texte à gauche */
+  }
+  
+  th {
+    background-color: #7a5048; /* Fond clair pour les en-têtes */
+  }
+
+tr:not(:first-child):hover {background-color: rgb(182, 221, 249);}
+
