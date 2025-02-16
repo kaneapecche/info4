@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SereniTrip</title>
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="projet.css/root.css">
-  <link rel="stylesheet" href="projet.css/login.css">
+  <link rel="stylesheet" href="root.css">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="apart.css">
 </head>
 <body>
     <div class="navigation">
-        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
             <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="présentation.html">Destination</a></li>
+            <li><a href="presentation.html">Destination</a></li>
             <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="profil.html">Profil</a></li>
         </ul>
         </div>
     </div>
@@ -26,19 +28,21 @@
         <form action="https://www.cafe-it.fr/cytech/post.php" method="post">
             <label for="email">Adresse e-mail:</label>
             <input class="fill" type="email" name="email">
-            <br>
+            <br><br>
             <label for="password">Mot de passe:</label>
             <input class="fill" type="password" name="password">
-            <br>
-            <input class="button" type="submit" value="sign in" formaction="profil.html">
+            <br><br>
+            
         </form>
+        <ul class="center-list">
+          <li><a href="profil.html" class="button-link">sign in</a></li>
+        </ul>
+        <h5>Si vous êtes pas incrit :</h5>
+        <ul class="center-list">
+          <li><a href="inscription.html">incription</a></li>
+        </ul>
         </fieldset>
     </div>
-    <br>
-    <div class="sign_in">
-        Je ne suis pas inscris: 
-        <a href="inscription.html" class="button">S'inscrire</a>
-    </div>
-    
 </body>
 </html>
+
