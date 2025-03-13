@@ -10,13 +10,12 @@
 </head>
 <body>
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
-            <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="présentation.html">Destination</a></li>
-            <li><a href="connexion.html">Connexion</a></li>
-            <li><a href="profil.html">Profil</a></li>
+            <li><a href="accueil.php">Accueil</a></li>
+            <li><a href="présentation.php">Destination</a></li>
+            <li><a href="connexion.php">Connexion</a></li>
         </ul>
         </div>
     </div>
