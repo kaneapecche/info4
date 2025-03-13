@@ -4,8 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
-   
-   <link rel="stylesheet" href="projet.css/login.css">
+   <link rel="stylesheet" href="projet.css/root.css">
    <link rel="stylesheet" href="projet.css/apart.css">
 </head>
 <body>
@@ -13,16 +12,14 @@
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
-            <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="présentation.html">Destination</a></li>
-            <li><a href="connexion.html">Connexion</a></li>
-            <li><a href="profil.html">Profil</a></li>
+            <li><a href="accueil.php">Accueil</a></li>
+            <li><a href="présentation.php">Destination</a></li>
+            <li><a href="connexion.php">Connexion</a></li>
         </ul>
         </div>
     </div>
     <br>
-   <div class="container">
-      <fieldset class="center-form">
+   <div class="container"><fieldset cvlass="center-form">
        <legend>Profil</legend>
        <form action="https://www.cafe-it.fr/cytech/post.php" method="post" >
            <label for="nom">Nom:</label>
@@ -42,6 +39,7 @@
            <input class="button" type="submit" value="✏️">
            <br/><br/>
            <label for="sexe">Genre:</label>
+           <input class="button" type="submit" value="✏️">
            <input type="radio" name="sexe" value="femme" disabled>Femme
            <input type="radio" name="sexe" value="homme" checked disabled>Homme
            <br/><br/>
@@ -57,9 +55,8 @@
        </form>
        <h5>Si vous êtes administrateur :</h5>
        <ul class="center-list">
-         <li><a href="admin.html">Administrateur</a></li>
+         <li><a href="admin.php">Administrateur</a></li>
        </ul>
-   </fieldset>
-</div>
+   </fieldset></div>
 </body>
 </html>
