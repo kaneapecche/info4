@@ -27,7 +27,7 @@ if (!$voyage) {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,6 +64,11 @@ if (!$voyage) {
                         <strong>📜 Description :</strong> <?php echo htmlspecialchars($etape['description']); ?><br>
                         <strong>🏨 Hébergement :</strong> <?php echo htmlspecialchars($etape['hebergement']); ?><br>
                         <strong>🎭 Activités :</strong> <?php echo htmlspecialchars($etape['activites']); ?><br>
+                        <strong>🍽️ Restauration :</strong> <?php echo htmlspecialchars($etape['restauration']); ?><br>
+                        <strong>🚍 Transport :</strong> <?php echo htmlspecialchars($etape['transport']); ?><br>
+                        <strong>👥 Nombre de personnes maximum :</strong> <?php echo htmlspecialchars($etape['nb_personnes']); ?><br>
+                        <strong>💰 Prix :</strong> <?php echo htmlspecialchars($etape['prix']); ?><br>
+                        
                     </li>
                 <?php } ?>
             <?php } else { ?>
@@ -71,8 +76,11 @@ if (!$voyage) {
             <?php } ?>
         </ul>
 
-        <a href="resumer_voyage.php?id=<?php echo $id_voyage; ?>">✨ Personnaliser mon voyage</a>
+        <a href="personnalisation_voyage.php?id=<?php echo $id_voyage; ?>">✨ Personnaliser mon voyage</a>
     </div>
 
 </body>
 </html>
+
+
+           
