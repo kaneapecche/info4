@@ -3,7 +3,6 @@ $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 $type_voyage = isset($_GET['type-voyage']) ? $_GET['type-voyage'] : 'tout'; // 'tout' par défaut
 
-// Filtrage des voyages selon le type sélectionné
 if ($type_voyage != 'tout') {
     $voyages = array_filter($voyages, function($voyage) use ($type_voyage) {
         return strpos(strtolower($voyage['titre']), strtolower($type_voyage)) !== false;
@@ -15,7 +14,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $voyages_par_page;
 $voyages_limites = array_slice($voyages, $offset, $voyages_par_page);
 
-// Calculer le nombre total de pages
+
 $total_voyages = count($voyages);
 $total_pages = ceil($total_voyages / $voyages_par_page);
 
@@ -78,22 +77,23 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
         <?php if (!empty($voyages_limites)) { ?>
             <?php foreach ($voyages_limites as $index => $valeur) { ?>  
                 <div class="container">
-                    <h4><?php echo htmlspecialchars($valeur['titre']); ?></h4>
+                    <h4><?php echo htmlspecialchars($valeur['titre']); ?>– <?php echo htmlspecialchars($valeur['prix']); ?> Tout Compris ! ✨ </h4>
                     <p><?php echo htmlspecialchars($valeur['texte']); ?></p>
                     <span>
-                        <img src="<?php echo htmlspecialchars($valeur['image']); ?>" width="250" height="180" alt="<?php echo htmlspecialchars($valeur['titre']); ?>" />
+                        <a href="voyages_details.php?id=<?php echo $offset + $index; ?>">
+                            <img src="<?php echo htmlspecialchars($valeur['image']); ?>" width="250" height="180" alt="<?php echo htmlspecialchars($valeur['titre']); ?>" />
+                        </a>
                     </span>
-                    <a href="voyages_details.php?id=<?php echo $index; ?>">L’aventure vous attend, découvrez-la !</a>
-
+                    
                 </div>
             <?php } ?>
         <?php } else { ?>
             <p>Aucun voyage disponible pour le moment.</p>
         <?php } ?>
     </div>
-
+<br><br>
     <div class="pagination">
-   
+       
         <?php if ($page > 1) { ?>
             <a href="?page=<?php echo $page - 1; ?>" class="pagination-arrow">« Précédent</a>
         <?php } ?>
@@ -105,11 +105,13 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
             </a>
         <?php } ?>
 
-
+      
         <?php if ($page < $total_pages) { ?>
              <a href="?page=<?php echo $page + 1; ?>" class="pagination-arrow">Suivant »</a>
          <?php } ?>
     </div>
-
+<br><br>
 </body>
 </html>
+
+          
