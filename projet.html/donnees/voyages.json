@@ -1,15 +1,80 @@
-[
+
     {
         "id": 0,
         "titre": "Voyage 1: Bain thermal en Islande",
         "texte": "Relaxez-vous tout en ayant une belle vue",
         "image": "image/islande.jpg",
+        "prix":"2800€",
         "etapes": [
             {
-                "titre": "Étape 1",
+                "titre": "Jour 1",
                 "description": "Bain thermal avec vue sur les volcans.",
                 "hebergement": "Hôtel 1",
-                "activites": "Bain thermal"
+                "restauration": "Repas au restaurant de l'hôtel",
+                "activites": "Bain thermal",
+                "transport": "Voiture privée pour l'étape suivante",
+                "nb_personnes": 2,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Excursion sur un glacier.",
+                "hebergement": "Lodge sur le glacier",
+                "restauration": "Déjeuner au lodge",
+                "activites": "Randonnée sur le glacier",
+                "transport": "Bus touristique",
+                "nb_personnes": 10,
+                "prix": "500€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Visite des geysers",
+                "hebergement": "Gîte traditionnel islandais",
+                "restauration": "Dîner dans un restaurant local",
+                "activites": "Observation des geysers",
+                "transport": "Mini-van",
+                "nb_personnes": 4,
+                "prix": "300€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Bain dans les sources chaudes naturelles.",
+                "hebergement": "Chambre d'hôtel avec vue sur la mer",
+                "restauration": "Petit-déjeuner au bord de la mer",
+                "activites": "Bain chaud naturel",
+                "transport": "Taxi privé",
+                "nb_personnes": 6,
+                "prix": "350€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Visite d'un musée culturel islandais.",
+                "hebergement": "Hôtel de luxe",
+                "restauration": "Buffet au restaurant",
+                "activites": "Visite guidée du musée",
+                "transport": "Autocar",
+                "nb_personnes": 20,
+                "prix": "200€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Excursion en bateau sur la lagune glaciaire.",
+                "hebergement": "Bungalow en bord de lagune",
+                "restauration": "Pique-nique sur l'île",
+                "activites": "Navigation sur la lagune",
+                "transport": "Bateau",
+                "nb_personnes": 8,
+                "prix": "450€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Détente dans une station balnéaire.",
+                "hebergement": "Station balnéaire",
+                "restauration": "Repas à la carte",
+                "activites": "Massage et détente",
+                "transport": "Voiture de location",
+                "nb_personnes": 2,
+                "prix": "600€"
             }
         ]
     },
@@ -17,87 +82,1113 @@
         "id": 1,
         "titre": "Voyage 2: Spa en Suisse",
         "texte": "Le rendez-vous du bien-être",
-        "image": "image/suisse.jpg"
+        "image": "image/suisse.jpg",
+        "prix":"2750€",
+        "etapes": [
+            {
+                "titre": "Jour 1",
+                "description": "Spa avec vue sur les Alpes.",
+                "hebergement": "Hôtel 5 étoiles",
+                "restauration": "Déjeuner gastronomique",
+                "activites": "Bain spa et massage",
+                "transport": "Chauffeur privé",
+                "nb_personnes": 2,
+                "prix": "500€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Randonnée dans les montagnes.",
+                "hebergement": "Refuge de montagne",
+                "restauration": "Dîner traditionnel suisse",
+                "activites": "Randonnée guidée",
+                "transport": "Téléphérique",
+                "nb_personnes": 8,
+                "prix": "350€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Séance de yoga en plein air.",
+                "hebergement": "Chalet de luxe",
+                "restauration": "Petit-déjeuner bio",
+                "activites": "Yoga en montagne",
+                "transport": "Vélo électrique",
+                "nb_personnes": 10,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Visite d'une cave à vin.",
+                "hebergement": "Hôtel chic",
+                "restauration": "Dégustation de vins et fromages",
+                "activites": "Visite de cave et dégustation",
+                "transport": "Bus",
+                "nb_personnes": 12,
+                "prix": "250€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Bain thermal en pleine nature.",
+                "hebergement": "Appartement avec vue panoramique",
+                "restauration": "Repas végétarien",
+                "activites": "Bain thermal en extérieur",
+                "transport": "Voiture de location",
+                "nb_personnes": 5,
+                "prix": "350€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Visite d'un spa historique.",
+                "hebergement": "Palace historique",
+                "restauration": "Repas au restaurant gastronomique",
+                "activites": "Spa et soins du corps",
+                "transport": "Taxi",
+                "nb_personnes": 6,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Séance de relaxation avec vue sur le lac.",
+                "hebergement": "Hôtel au bord du lac",
+                "restauration": "Dîner en terrasse",
+                "activites": "Massage et relaxation",
+                "transport": "Bateau",
+                "nb_personnes": 4,
+                "prix": "500€"
+            }
+        ]
 
     },
     {
         "id": 2,
         "titre": "Voyage 3: Thalassothérapie en France ",
         "texte": "Un bain de mer pour le corps et l'esprit",
-        "image": "image/france.jpg"
+        "image": "image/france.jpg",
+        "prix":"2400€",
+        "etapes": [
+            {
+                "titre": "Jour 1",
+                "description": "Bain de mer et soins thérapeutiques.",
+                "hebergement": "Hôtel en bord de mer",
+                "restauration": "Dîner au restaurant de l'hôtel",
+                "activites": "Bain de mer et massage",
+                "transport": "Voiture privée",
+                "nb_personnes": 2,
+                "prix": "350€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Séance de yoga sur la plage.",
+                "hebergement": "Bungalow sur la plage",
+                "restauration": "Petit-déjeuner équilibré",
+                "activites": "Yoga au lever du soleil",
+                "transport": "Vélo électrique",
+                "nb_personnes": 5,
+                "prix": "300€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Bain d'algues et gommage.",
+                "hebergement": "Chalet de luxe",
+                "restauration": "Repas léger et végétarien",
+                "activites": "Thalassothérapie",
+                "transport": "Voiture",
+                "nb_personnes": 4,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Visite des falaises et plages.",
+                "hebergement": "Hôtel avec vue sur l'océan",
+                "restauration": "Repas au bord de l'eau",
+                "activites": "Excursion à pied",
+                "transport": "Minibus",
+                "nb_personnes": 12,
+                "prix": "275€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Séance de relaxation et bain de boue.",
+                "hebergement": "Station thermale",
+                "restauration": "Repas de fruits de mer",
+                "activites": "Bain de boue et relaxation",
+                "transport": "Voiture de location",
+                "nb_personnes": 6,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Détente au spa marine.",
+                "hebergement": "Resort de luxe",
+                "restauration": "Repas santé",
+                "activites": "Soins du corps",
+                "transport": "Navette",
+                "nb_personnes": 8,
+                "prix": "450€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Détente et méditation sur une plage tranquille.",
+                "hebergement": "Hôtel en front de mer",
+                "restauration": "Repas méditerranéen",
+                "activites": "Méditation en groupe",
+                "transport": "Taxi privé",
+                "nb_personnes": 6,
+                "prix": "225€"
+            }
+        ]
     },
     {
         "id": 3,
         "titre": "Voyage 4: Yoga en Inde",
         "texte": "Profitez d'un voyage intérieur à chaque posture",
-        "image": "image/inde.jpg"
+        "image": "image/inde.jpg",
+        "prix":"2700€",
+        "etapes": [
+            {
+                "titre": "Jour 1",
+                "description": "Séance de yoga au lever du soleil.",
+                "hebergement": "Ashram de yoga",
+                "restauration": "Repas végétalien",
+                "activites": "Yoga et méditation",
+                "transport": "Marche",
+                "nb_personnes": 15,
+                "prix": "300€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Pratique de yoga en pleine nature.",
+                "hebergement": "Bungalow dans la jungle",
+                "restauration": "Repas bio",
+                "activites": "Yoga sur la plage",
+                "transport": "Vélo",
+                "nb_personnes": 10,
+                "prix": "350€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Cours de yoga traditionnel.",
+                "hebergement": "Hôtel en pleine nature",
+                "restauration": "Repas végétarien",
+                "activites": "Yoga traditionnel",
+                "transport": "Autobus",
+                "nb_personnes": 20,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Randonnée spirituelle dans les montagnes.",
+                "hebergement": "Gîte en montagne",
+                "restauration": "Cuisine locale",
+                "activites": "Randonnée",
+                "transport": "Taxi",
+                "nb_personnes": 10,
+                "prix": "350€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Méditation guidée sur les rives d'un lac sacré.",
+                "hebergement": "Retraite zen",
+                "restauration": "Repas léger",
+                "activites": "Méditation",
+                "transport": "Canot",
+                "nb_personnes": 5,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Séance de pranayama (respiration).",
+                "hebergement": "Centre de bien-être",
+                "restauration": "Repas de fruits frais",
+                "activites": "Pranayama et relaxation",
+                "transport": "Marche",
+                "nb_personnes": 8,
+                "prix": "400€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Détente et méditation dans un temple ancien.",
+                "hebergement": "Ashram traditionnel",
+                "restauration": "Repas végétarien",
+                "activites": "Méditation et yoga",
+                "transport": "Rikshaw",
+                "nb_personnes": 12,
+                "prix": "500€"
+            }
+        ]
+        
     },
     {
         "id": 4,
         "titre": "Voyage 5: Hammam au Maroc",
         "texte": "Un cocon pour rêver éveillé",
-        "image": "image/maroc.jpg"
+        "image": "image/maroc.jpg",
+        "prix":"2950€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Détente dans un hammam traditionnel.",
+            "hebergement": "Riad de charme",
+            "restauration": "Repas marocains traditionnels",
+            "activites": "Hammam et massage",
+            "transport": "Marche",
+            "nb_personnes": 10,
+            "prix": "350€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Séance de gommage et soins du corps.",
+            "hebergement": "Palace de luxe",
+            "restauration": "Repas méditerranéens",
+            "activites": "Soins spa et relaxation",
+            "transport": "Véhicule privé",
+            "nb_personnes": 15,
+            "prix": "550€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Exploration des souks de Marrakech.",
+            "hebergement": "Hôtel traditionnel",
+            "restauration": "Cuisine marocaine",
+            "activites": "Shopping et découverte culturelle",
+            "transport": "Caravan",
+            "nb_personnes": 12,
+            "prix": "275€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Séance de yoga et relaxation en terrasse.",
+            "hebergement": "Riad au centre-ville",
+            "restauration": "Repas bio et léger",
+            "activites": "Yoga et méditation",
+            "transport": "Vélo",
+            "nb_personnes": 10,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Découverte du désert d'Agafay.",
+            "hebergement": "Camp de luxe dans le désert",
+            "restauration": "Repas traditionnels du désert",
+            "activites": "Dune bashing et randonnée",
+            "transport": "4x4",
+            "nb_personnes": 8,
+            "prix": "475€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Séance de massage oriental.",
+            "hebergement": "Centre de bien-être",
+            "restauration": "Repas légers et locaux",
+            "activites": "Massage et soins du corps",
+            "transport": "Marche",
+            "nb_personnes": 5,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Détente et dîner traditionnel au bord de l'eau.",
+            "hebergement": "Riad à Fès",
+            "restauration": "Dîner aux saveurs marocaines",
+            "activites": "Repas sous les étoiles et méditation",
+            "transport": "Car",
+            "nb_personnes": 12,
+            "prix": "400€"
+        }
+    ]
+
     },
     {
         "id": 5,
         "titre": "Voyage 6: Jacuzzi en Autriche",
         "texte": "Plongez dans les bulles du bonheur",
-        "image": "image/autriche.jpg"
+        "image": "image/autriche.jpg",
+        "prix":"3100€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Détente dans un jacuzzi avec vue sur les Alpes.",
+            "hebergement": "Hôtel spa de luxe",
+            "restauration": "Cuisine autrichienne raffinée",
+            "activites": "Jacuzzi et relaxation",
+            "transport": "Voiture privée",
+            "nb_personnes": 10,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Séance de bain thermal et soins du corps.",
+            "hebergement": "Centre thermale",
+            "restauration": "Repas léger et bio",
+            "activites": "Bain thermal et relaxation",
+            "transport": "Navette",
+            "nb_personnes": 12,
+            "prix": "400€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Excursion dans les montagnes tyroliennes.",
+            "hebergement": "Chalet montagnard",
+            "restauration": "Repas de montagne",
+            "activites": "Randonnée et détente",
+            "transport": "Téléphérique",
+            "nb_personnes": 8,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Séance de relaxation et massage aux huiles essentielles.",
+            "hebergement": "Spa de bien-être",
+            "restauration": "Repas de fruits frais",
+            "activites": "Massage et relaxation",
+            "transport": "Marche",
+            "nb_personnes": 6,
+            "prix": "350€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Découverte des villages autrichiens typiques.",
+            "hebergement": "Maison d'hôte traditionnelle",
+            "restauration": "Cuisine locale",
+            "activites": "Visite des villages et marchés",
+            "transport": "Vélo",
+            "nb_personnes": 10,
+            "prix": "350€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Détente dans un sauna panoramique.",
+            "hebergement": "Hôtel spa",
+            "restauration": "Repas légers et bio",
+            "activites": "Sauna et détente",
+            "transport": "Marche",
+            "nb_personnes": 12,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Dîner gastronomique dans un restaurant étoilé.",
+            "hebergement": "Palace de luxe",
+            "restauration": "Dîner étoilé",
+            "activites": "Dîner et contemplation",
+            "transport": "Véhicule privé",
+            "nb_personnes": 10,
+            "prix": "600€"
+        }
+    ]
     },
     {
         "id": 6,
        "titre": "Voyage 7: Bain de fleurs dans la jungle tropicales du Costa Rica",
        "texte":"Plongez dans un océan de fleurs et laissez la jungle vous envoûter",
-       "image":"image/bain_fleur.jpg"
+       "image":"image/bain_fleur.jpg",
+       "prix":"3300€",
+       "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Bain de fleurs et relaxation dans la jungle.",
+            "hebergement": "Éco-lodge en pleine nature",
+            "restauration": "Repas bio et végétalien",
+            "activites": "Bain de fleurs et massage",
+            "transport": "Marche dans la jungle",
+            "nb_personnes": 12,
+            "prix": "400€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Randonnée dans la jungle tropicale.",
+            "hebergement": "Bungalows en pleine nature",
+            "restauration": "Cuisine locale",
+            "activites": "Randonnée et découverte de la faune",
+            "transport": "Véhicule tout-terrain",
+            "nb_personnes": 10,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Observation des oiseaux exotiques.",
+            "hebergement": "Éco-hôtel",
+            "restauration": "Repas locaux",
+            "activites": "Observation des oiseaux",
+            "transport": "Marche",
+            "nb_personnes": 8,
+            "prix": "350€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Détente dans un bain de vapeur tropical.",
+            "hebergement": "Villa dans la jungle",
+            "restauration": "Cuisine locale",
+            "activites": "Bain de vapeur et relaxation",
+            "transport": "Véhicule privé",
+            "nb_personnes": 6,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Méditation au bord d'une rivière.",
+            "hebergement": "Retraite zen au bord de l'eau",
+            "restauration": "Repas légers et végétariens",
+            "activites": "Méditation et yoga",
+            "transport": "Marche",
+            "nb_personnes": 10,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Exploration des chutes d'eau de la jungle.",
+            "hebergement": "Lodge de luxe dans la jungle",
+            "restauration": "Repas de fruits frais et locaux",
+            "activites": "Randonnée vers les chutes d'eau",
+            "transport": "Véhicule 4x4",
+            "nb_personnes": 8,
+            "prix": "600€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Détente et bain dans un jacuzzi privé avec vue sur la jungle.",
+            "hebergement": "Hôtel avec spa",
+            "restauration": "Repas gastronomiques",
+            "activites": "Jacuzzi et relaxation",
+            "transport": "Marche",
+            "nb_personnes": 12,
+            "prix": "500€"
+        }
+    ]
 
     },
     {
         "id": 7,
         "titre": "Voyage 8: Sauna flottant sur un lac gelé en Finlande",
         "texte": "Chaleur nordique et glace polaire : un contraste envoûtant",
-        "image":"image/Sauna_flottant.jpg"
+        "image":"image/Sauna_flottant.jpg",
+        "prix":"4300€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Bain dans un sauna flottant sur un lac gelé.",
+            "hebergement": "Chalet en bois au bord du lac",
+            "restauration": "Cuisine locale finlandaise",
+            "activites": "Sauna flottant et relaxation",
+            "transport": "Marche sur la glace",
+            "nb_personnes": 10,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Randonnée à travers les forêts enneigées.",
+            "hebergement": "Hôtel traditionnel",
+            "restauration": "Repas de gibier et de légumes",
+            "activites": "Randonnée et exploration de la nature",
+            "transport": "Traîneau à chiens",
+            "nb_personnes": 8,
+            "prix": "600€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Détente au bord d'un feu de camp.",
+            "hebergement": "Cabane dans la neige",
+            "restauration": "Soupe chaude et pain frais",
+            "activites": "Feu de camp et relaxation",
+            "transport": "Marche",
+            "nb_personnes": 12,
+            "prix": "400€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Séance de méditation au bord d'un lac glacé.",
+            "hebergement": "Chalet isolé",
+            "restauration": "Repas légers et énergétiques",
+            "activites": "Méditation et respiration",
+            "transport": "Véhicule privé",
+            "nb_personnes": 6,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Détente dans un spa nordique.",
+            "hebergement": "Centre de bien-être",
+            "restauration": "Repas de poissons et de légumes",
+            "activites": "Sauna et bain de vapeur",
+            "transport": "Marche",
+            "nb_personnes": 10,
+            "prix": "600€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Exploration de la Laponie en traîneau.",
+            "hebergement": "Auberge traditionnelle",
+            "restauration": "Repas traditionnel lapon",
+            "activites": "Traîneau à rennes et exploration",
+            "transport": "Traîneau",
+            "nb_personnes": 8,
+            "prix": "800€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Observation des aurores boréales dans un igloo en verre.",
+            "hebergement": "Igloo de verre",
+            "restauration": "Repas gastronomiques",
+            "activites": "Observation des aurores boréales",
+            "transport": "Véhicule privé",
+            "nb_personnes": 10,
+            "prix": "950€"
+        }
+    ]
     },
     {
         "id": 8,
         "titre": "Voyage 9: Massage sous une cascade naturelle en Indonésie",
         "texte": "Laissez l’eau et les mains expertes délier chaque tension",
-        "image":"image/massage_cascade.jpg"
+        "image":"image/massage_cascade.jpg",
+        "prix":"2900€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Massage relaxant sous une cascade naturelle.",
+            "hebergement": "Villas de luxe au bord de la cascade",
+            "restauration": "Cuisine indonésienne",
+            "activites": "Massage sous la cascade",
+            "transport": "Véhicule privé",
+            "nb_personnes": 12,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Yoga au bord d'un ruisseau.",
+            "hebergement": "Retraite de yoga",
+            "restauration": "Repas végétariens",
+            "activites": "Yoga et méditation",
+            "transport": "Marche",
+            "nb_personnes": 10,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Détente au bord de la mer avec un massage traditionnel.",
+            "hebergement": "Bungalow sur la plage",
+            "restauration": "Repas locaux et légers",
+            "activites": "Massage traditionnel et détente",
+            "transport": "Véhicule privé",
+            "nb_personnes": 8,
+            "prix": "400€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Exploration des rizières en terrasses.",
+            "hebergement": "Éco-lodge au milieu des rizières",
+            "restauration": "Repas végétariens",
+            "activites": "Randonnée dans les rizières",
+            "transport": "Vélo",
+            "nb_personnes": 12,
+            "prix": "350€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Soins du visage avec des produits locaux.",
+            "hebergement": "Centre de spa",
+            "restauration": "Repas de fruits frais",
+            "activites": "Soins du visage et du corps",
+            "transport": "Marche",
+            "nb_personnes": 8,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Séance de méditation en pleine forêt.",
+            "hebergement": "Retraite zen",
+            "restauration": "Repas végétariens légers",
+            "activites": "Méditation et relaxation",
+            "transport": "Véhicule privé",
+            "nb_personnes": 6,
+            "prix": "350€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Détente et baignade dans une piscine à débordement.",
+            "hebergement": "Hôtel de luxe",
+            "restauration": "Repas gastronomiques",
+            "activites": "Baignade et relaxation",
+            "transport": "Marche",
+            "nb_personnes": 10,
+            "prix": "400€"
+        }
+    ]
     },
     {
         "id": 9,
         "titre": "Voyage 10: Flottaison en Mer Morte la nuit en Jordanie",
         "texte": "Léger comme l’air, bercé par les étoiles",
-        "image":"image/flottaison_mm.jpg"
+        "image":"image/flottaison_mm.jpg",
+        "prix":"3900€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Baignade flottante dans la Mer Morte sous un ciel étoilé.",
+            "hebergement": "Hôtel spa en bord de Mer Morte",
+            "restauration": "Cuisine locale",
+            "activites": "Flottaison et relaxation",
+            "transport": "Taxi",
+            "nb_personnes": 10,
+            "prix": "600€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Enveloppement de boue minérale thérapeutique.",
+            "hebergement": "Resort bien-être",
+            "restauration": "Plats détox",
+            "activites": "Soins de boue et spa",
+            "transport": "Marche",
+            "nb_personnes": 12,
+            "prix": "550€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Randonnée au lever du soleil dans le désert de Wadi Rum.",
+            "hebergement": "Campement bédouin",
+            "restauration": "Cuisine bédouine",
+            "activites": "Randonnée et contemplation",
+            "transport": "4x4",
+            "nb_personnes": 8,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Excursion au Mont Nébo, site sacré biblique.",
+            "hebergement": "Maison d’hôtes traditionnelle",
+            "restauration": "Spécialités jordaniennes",
+            "activites": "Découverte culturelle",
+            "transport": "Bus",
+            "nb_personnes": 15,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Visite et méditation dans l’ancienne cité de Pétra.",
+            "hebergement": "Hôtel de charme",
+            "restauration": "Repas gastronomique",
+            "activites": "Exploration et méditation",
+            "transport": "Cheval",
+            "nb_personnes": 10,
+            "prix": "650€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Soirée détente dans un hammam oriental.",
+            "hebergement": "Riad authentique",
+            "restauration": "Thé à la menthe et pâtisseries",
+            "activites": "Bain de vapeur et relaxation",
+            "transport": "Taxi",
+            "nb_personnes": 6,
+            "prix": "550€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Coucher de soleil sur la Mer Rouge avec bain apaisant.",
+            "hebergement": "Resort en bord de mer",
+            "restauration": "Dîner aux chandelles",
+            "activites": "Baignade et détente",
+            "transport": "Bateau",
+            "nb_personnes": 8,
+            "prix": "600€"
+        }
+    ]
     },
     {
         "id": 10,
         "titre": "Voyage 11: Retraite zen au Japon",
         "texte": "Là où le silence parle à votre âme",
-        "image":"image/retraite_zen.jpg"
+        "image":"image/retraite_zen.jpg",
+        "prix":"4200€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Initiation à la méditation zen.",
+            "hebergement": "Monastère bouddhiste",
+            "restauration": "Repas végétarien",
+            "activites": "Méditation zen",
+            "transport": "Marche",
+            "nb_personnes": 12,
+            "prix": "600€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Cérémonie du thé traditionnelle.",
+            "hebergement": "Ryokan traditionnel",
+            "restauration": "Repas Kaiseki",
+            "activites": "Cérémonie du thé",
+            "transport": "Train",
+            "nb_personnes": 10,
+            "prix": "650€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Balade contemplative dans un jardin zen.",
+            "hebergement": "Hôtel de charme",
+            "restauration": "Cuisine locale",
+            "activites": "Balade et méditation",
+            "transport": "Taxi",
+            "nb_personnes": 15,
+            "prix": "525€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Séance de yoga et calligraphie japonaise.",
+            "hebergement": "Temple bouddhiste",
+            "restauration": "Repas végétalien",
+            "activites": "Yoga et calligraphie",
+            "transport": "Vélo",
+            "nb_personnes": 8,
+            "prix": "650€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Bain thermal dans un onsen naturel.",
+            "hebergement": "Auberge traditionnelle",
+            "restauration": "Cuisine locale",
+            "activites": "Onsen et relaxation",
+            "transport": "Bus",
+            "nb_personnes": 10,
+            "prix": "600€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Méditation au sommet du Mont Koya.",
+            "hebergement": "Retraite en montagne",
+            "restauration": "Repas léger",
+            "activites": "Méditation et randonnée",
+            "transport": "Minibus",
+            "nb_personnes": 7,
+            "prix": "650€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Exploration spirituelle d’un sanctuaire shinto.",
+            "hebergement": "Ryokan en nature",
+            "restauration": "Cuisine végétarienne",
+            "activites": "Découverte et méditation",
+            "transport": "Train",
+            "nb_personnes": 12,
+            "prix": "525€"
+        }
+    ]
     },
     {
         "id": 11,
         "titre": "Voyage 12: Jacuzzi privé dans un igloo de verre sous les aurores boréales en Suède",
         "texte": "Bulle de chaleur sous un ciel magique : vivez l’émerveillement nordique",
-        "image": "image/Jacuzz_igloo.jpg"
+        "image": "image/Jacuzz_igloo.jpg",
+        "prix":"4550€",
+        "etapes": [
+            {
+                "titre": "Jour 1",
+                "description": "Arrivée et installation dans un igloo en verre.",
+                "hebergement": "Igloo chauffé",
+                "restauration": "Dîner nordique",
+                "activites": "Observation des aurores boréales",
+                "transport": "Navette privée",
+                "nb_personnes": 8,
+                "prix": "700€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Bain relaxant dans un jacuzzi extérieur sous les étoiles.",
+                "hebergement": "Lodge de luxe",
+                "restauration": "Plats réconfortants",
+                "activites": "Jacuzzi et détente",
+                "transport": "Motoneige",
+                "nb_personnes": 6,
+                "prix": "650€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Safari en traîneau à chiens dans la neige.",
+                "hebergement": "Cabane en bois",
+                "restauration": "Cuisine lapone",
+                "activites": "Balade en traîneau",
+                "transport": "Traîneau à chiens",
+                "nb_personnes": 10,
+                "prix": "700€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Méditation et relaxation dans un sauna traditionnel.",
+                "hebergement": "Hôtel de glace",
+                "restauration": "Buffet scandinave",
+                "activites": "Sauna et détente",
+                "transport": "Bus",
+                "nb_personnes": 12,
+                "prix": "650€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Excursion en raquettes dans la forêt boréale.",
+                "hebergement": "Refuge en montagne",
+                "restauration": "Plats traditionnels",
+                "activites": "Randonnée en raquettes",
+                "transport": "Marche",
+                "nb_personnes": 15,
+                "prix": "600€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Nuit sous une bulle transparente dans la neige.",
+                "hebergement": "Dôme en verre",
+                "restauration": "Cuisine locale",
+                "activites": "Contemplation et relaxation",
+                "transport": "Navette",
+                "nb_personnes": 8,
+                "prix": "650€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Détente et bain glacé après un sauna.",
+                "hebergement": "Cabane de montagne",
+                "restauration": "Plats de saison",
+                "activites": "Bain glacé et sauna",
+                "transport": "Voiture privée",
+                "nb_personnes": 10,
+                "prix": "600€"
+            }
+        ]
     },
     {
         "id": 12,
         "titre": "Voyage 13: Plages & Méditation au Maldives",
         "texte": "Respirez. Ressentez. Laissez-vous porter par l'instant ",
-        "image":"image/maldive.jpg"
+        "image":"image/maldive.jpg",
+        "prix":"4800€",
+        "etapes": [
+            {
+                "titre": "Jour 1",
+                "description": "Méditation sur une plage isolée au lever du soleil.",
+                "hebergement": "Bungalow sur pilotis",
+                "restauration": "Fruits tropicaux",
+                "activites": "Méditation et relaxation",
+                "transport": "Bateau",
+                "nb_personnes": 10,
+                "prix": "750€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Plongée en apnée dans les récifs coralliens.",
+                "hebergement": "Villa de luxe",
+                "restauration": "Buffet tropical",
+                "activites": "Snorkeling",
+                "transport": "Jet-ski",
+                "nb_personnes": 12,
+                "prix": "700€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Yoga au coucher du soleil sur une plage déserte.",
+                "hebergement": "Hôtel en bord de mer",
+                "restauration": "Cuisine bio",
+                "activites": "Yoga et relaxation",
+                "transport": "Vélo",
+                "nb_personnes": 8,
+                "prix": "650€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Balade en bateau au milieu des dauphins.",
+                "hebergement": "Resort écologique",
+                "restauration": "Repas végétarien",
+                "activites": "Observation des dauphins",
+                "transport": "Bateau",
+                "nb_personnes": 15,
+                "prix": "700€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Séance de relaxation dans un spa flottant.",
+                "hebergement": "Bungalow privé",
+                "restauration": "Cuisine ayurvédique",
+                "activites": "Massage et soins",
+                "transport": "Canoë",
+                "nb_personnes": 10,
+                "prix": "750€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Exploration d’une île inhabitée pour une méditation intense.",
+                "hebergement": "Tente de luxe",
+                "restauration": "Cuisine traditionnelle",
+                "activites": "Retraite spirituelle",
+                "transport": "Kayak",
+                "nb_personnes": 6,
+                "prix": "600€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Dîner aux chandelles sur la plage sous un ciel étoilé.",
+                "hebergement": "Resort exclusif",
+                "restauration": "Dîner gastronomique",
+                "activites": "Détente et contemplation",
+                "transport": "Voiturette de golf",
+                "nb_personnes": 10,
+                "prix": "650€"
+            }
+        ]
     },
     {
         "id": 13,
         "titre": "Voyage 14: Évasion nordique en Norvège",
         "texte": "Sous les lumières du Nord, trouvez votre paix intérieure",
-        "image":"image/norvege.jpg"
+        "image":"image/norvege.jpg",
+        "prix":"3800€",
+        "etapes": [
+            {
+                "titre": "Jour 1",
+                "description": "Arrivée dans un chalet au bord d’un fjord.",
+                "hebergement": "Chalet scandinave",
+                "restauration": "Cuisine locale",
+                "activites": "Observation des fjords",
+                "transport": "Voiture",
+                "nb_personnes": 12,
+                "prix": "600€"
+            },
+            {
+                "titre": "Jour 2",
+                "description": "Randonnée méditative en montagne.",
+                "hebergement": "Refuge nordique",
+                "restauration": "Plats végétariens",
+                "activites": "Marche en pleine nature",
+                "transport": "Marche",
+                "nb_personnes": 10,
+                "prix": "500€"
+            },
+            {
+                "titre": "Jour 3",
+                "description": "Excursion en kayak sur un fjord paisible.",
+                "hebergement": "Hôtel en bord de fjord",
+                "restauration": "Fruits de mer",
+                "activites": "Kayak et contemplation",
+                "transport": "Kayak",
+                "nb_personnes": 8,
+                "prix": "550€"
+            },
+            {
+                "titre": "Jour 4",
+                "description": "Détente dans un sauna au bord d’un lac gelé.",
+                "hebergement": "Cabane en bois",
+                "restauration": "Plats chauds",
+                "activites": "Sauna et relaxation",
+                "transport": "Motoneige",
+                "nb_personnes": 10,
+                "prix": "550€"
+            },
+            {
+                "titre": "Jour 5",
+                "description": "Excursion en bateau pour observer les orques.",
+                "hebergement": "Eco-lodge",
+                "restauration": "Cuisine nordique",
+                "activites": "Observation des orques",
+                "transport": "Bateau",
+                "nb_personnes": 15,
+                "prix": "600€"
+            },
+            {
+                "titre": "Jour 6",
+                "description": "Méditation sous les aurores boréales.",
+                "hebergement": "Chalet en montagne",
+                "restauration": "Repas bio",
+                "activites": "Contemplation et relaxation",
+                "transport": "Bus",
+                "nb_personnes": 10,
+                "prix": "500€"
+            },
+            {
+                "titre": "Jour 7",
+                "description": "Nuit en igloo de verre avec vue sur le ciel étoilé.",
+                "hebergement": "Igloo transparent",
+                "restauration": "Dîner scandinave",
+                "activites": "Détente et méditation",
+                "transport": "Taxi privé",
+                "nb_personnes": 6,
+                "prix": "500€"
+            }
+        ]
+    
     },
     {
         "id": 14,
         "titre": "Voyage 15: Yoga et nature à Bali",
         "texte": " Reconnectez-vous à l'esssentiel, au coeur de Bali",
-        "image":"image/bali.jpg"
-    }
+        "image":"image/bali.jpg",
+        "prix":"3400€",
+        "etapes": [
+        {
+            "titre": "Jour 1",
+            "description": "Arrivée dans un écolodge entouré de rizières.",
+            "hebergement": "Ecolodge",
+            "restauration": "Cuisine balinaise",
+            "activites": "Méditation et relaxation",
+            "transport": "Voiture privée",
+            "nb_personnes": 10,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 2",
+            "description": "Séance de yoga au lever du soleil.",
+            "hebergement": "Ashram spirituel",
+            "restauration": "Repas végétariens",
+            "activites": "Yoga et respiration",
+            "transport": "Marche",
+            "nb_personnes": 15,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 3",
+            "description": "Bain dans une source d’eau chaude naturelle.",
+            "hebergement": "Bungalow en pleine nature",
+            "restauration": "Cuisine ayurvédique",
+            "activites": "Relaxation et baignade",
+            "transport": "Scooter",
+            "nb_personnes": 8,
+            "prix": "450€"
+        },
+        {
+            "titre": "Jour 4",
+            "description": "Randonnée spirituelle dans une forêt tropicale.",
+            "hebergement": "Hôtel écologique",
+            "restauration": "Plats traditionnels",
+            "activites": "Marche et découverte",
+            "transport": "Vélo",
+            "nb_personnes": 12,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 5",
+            "description": "Méditation dans un temple sacré.",
+            "hebergement": "Retraite de yoga",
+            "restauration": "Repas légers",
+            "activites": "Méditation et introspection",
+            "transport": "Minibus",
+            "nb_personnes": 10,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 6",
+            "description": "Excursion en bateau pour observer les dauphins.",
+            "hebergement": "Villa en bord de mer",
+            "restauration": "Fruits frais",
+            "activites": "Observation des dauphins",
+            "transport": "Bateau",
+            "nb_personnes": 8,
+            "prix": "500€"
+        },
+        {
+            "titre": "Jour 7",
+            "description": "Cérémonie spirituelle avec un prêtre balinais.",
+            "hebergement": "Havre de paix",
+            "restauration": "Cuisine traditionnelle",
+            "activites": "Rituel et bénédiction",
+            "transport": "Rikshaw",
+            "nb_personnes": 6,
+            "prix": "500€"
+        }
+    ]
+}
+    
 
 ]
