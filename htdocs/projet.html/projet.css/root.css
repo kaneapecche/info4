@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(183, 172, 172); 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    display: flex; 
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+ul li {
+    margin-right: 10px;
+}
+
+ul li a {
+    background-color: rgb(128, 83, 83);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+ul li a:hover {
+    background-color: #555;
+}
+h1 {
+    font-size: 2.5rem;
+    color:rgb(120, 101, 101);
+}
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+div.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 300px;
+    border: black;
+}
+div.contained{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.trip {
+    background-color: white;
+    padding: 20px;
+    width: 25%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.trip img {
+    width: 50%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.trip h4 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.trip p {
+    font-size: 1rem;
+    color:grey;
+}
+
+.tab{
+    padding-top: 30px;
+    table-layout: fixed;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    border-collapse: collapse; 
+}
+
+table{
+    margin-top: auto;
+    width: 95%;
+}
+  
+th, td {
+    border: 1px solid #ddd; /* Ajoute une bordure fine et grise */
+    padding: 8px; /* Ajoute de l'espace à l'intérieur des cellules */
+    text-align: left; /* Aligne le texte à gauche */
+  }
+  
+  th {
+    background-color: #7a5048; /* Fond clair pour les en-têtes */
+  }
+
+tr:not(:first-child):hover {background-color: rgb(182, 221, 249);}

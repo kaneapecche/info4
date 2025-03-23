@@ -1,0 +1,59 @@
+
+.voyages-details ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.voyages-details ul li {
+    background-color: rgb(231, 224, 224);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    text-align: center; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.voyages-details ul li:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.voyages-details ul li strong {
+    font-weight: bold;
+    color: rgb(120, 101, 101); 
+}
+
+.voyages-details ul li h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: rgb(128, 83, 83); 
+}
+
+.voyages-details ul li p {
+    font-size: 1rem;
+    color: grey;
+    margin-bottom: 10px;
+}
+
+.voyages-details ul li .etape-info {
+    flex-grow: 1; 
+}
+
+.voyages-details ul li .etape-info:last-child {
+    margin-bottom: 0;
+}
+
+
+.voyages-details ul li i {
+    font-size: 2rem; 
+    color: rgb(128, 83, 83); 
+    margin-bottom: 10px;
+}
+
