@@ -1,12 +1,7 @@
 <?php
-$voyages = [
-    ["titre" => "Bain thermal", "position" => "Paris", "date_arrivee" => "2025-04-10", "date_depart" => "2025-04-15", "options" => ["Bain", "Spa"], "personnes" => 2, "image" => "bain_thermal.jpg", "description" => "Relaxez-vous tout en ayant une belle vue"],
-    ["titre" => "Spa", "position" => "Nice", "date_arrivee" => "2025-05-01", "date_depart" => "2025-05-07", "options" => ["Massage", "Relaxation"], "personnes" => 1, "image" => "spa.jpg", "description" => "Le rendez-vous du bien-être"],
-    ["titre" => "Thalassothérapie", "position" => "Marseille", "date_arrivee" => "2025-06-10", "date_depart" => "2025-06-17", "options" => ["Mer", "Soins du corps"], "personnes" => 3, "image" => "thalaso.jpg", "description" => "Un bain de mer pour le corps et l'esprit"],
-    ["titre" => "Yoga", "position" => "Lyon", "date_arrivee" => "2025-07-15", "date_depart" => "2025-07-22", "options" => ["Yoga", "Méditation"], "personnes" => 1, "image" => "yoga.jpg", "description" => "Profitez d'un voyage intérieur à chaque posture"],
-    ["titre" => "Hammam", "position" => "Bordeaux", "date_arrivee" => "2025-08-05", "date_depart" => "2025-08-12", "options" => ["Hammam", "Relaxation"], "personnes" => 2, "image" => "hammam.jpg", "description" => "Un cocon pour rêver éveillé"],
-    ["titre" => "Jacuzzi", "position" => "Toulouse", "date_arrivee" => "2025-09-10", "date_depart" => "2025-09-17", "options" => ["Jacuzzi", "Détente"], "personnes" => 1, "image" => "jacuzzi.jpg", "description" => "Plongez dans les bulles du bonheur"]
-];
+// Charger les voyages depuis le fichier JSON
+$json = file_get_contents('voyages.json');
+$voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
 $titre = $_GET['titre'] ?? '';
@@ -28,6 +23,15 @@ foreach ($voyages as $voyage) {
         $resultats[] = $voyage;
     }
 }
+
+// Pagination
+$voyages_par_page = 5;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $voyages_par_page;
+$voyages_limites = array_slice($resultats, $offset, $voyages_par_page);
+
+$total_voyages = count($resultats);
+$total_pages = ceil($total_voyages / $voyages_par_page);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,22 +81,51 @@ foreach ($voyages as $voyage) {
         <button type="submit">Filtrer</button>
     </form>
 
-    <!-- Affichage des voyages filtrés -->
-    <div class="contained">
-        <?php if (!empty($resultats)): ?>
-            <div class="voyages-container">
-                <?php foreach ($resultats as $voyage): ?>
-                    <div class="container">
-                        <h4><?= htmlspecialchars($voyage['titre']); ?></h4>
-                        <p><?= htmlspecialchars($voyage['description']); ?><p>
-                        <img src="<?= htmlspecialchars($voyage['image']); ?>" width="250" height="180" alt="<?= htmlspecialchars($voyage['titre']); ?>">
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php else: ?>
-            <p>Aucun voyage trouvé.</p>
+    <!-- Affichage des voyages filtrés avec pagination -->
+<div class="contained">
+    <?php if (!empty($voyages_limites)): ?>
+        <div class="voyages-container">
+            <?php foreach ($voyages_limites as $voyage): ?>
+                <div class="container">
+                    <h4><?= htmlspecialchars($voyage['titre']); ?> – <?= htmlspecialchars($voyage['prix']); ?> Tout Compris ! ✨</h4>
+                    <p><?= htmlspecialchars($voyage['texte']); ?></p>
+                    <img src="<?= htmlspecialchars($voyage['image']); ?>" width="250" height="180" alt="<?= htmlspecialchars($voyage['titre']); ?>">
+
+                    <!-- Affichage des étapes -->
+                    <?php foreach ($voyage['etapes'] as $etape): ?>
+                        <div class="etape">
+                            <h5><?= htmlspecialchars($etape['titre']); ?></h5>
+                            <p><strong>Description:</strong> <?= htmlspecialchars($etape['description']); ?></p>
+                            <p><strong>Hébergement:</strong> <?= htmlspecialchars($etape['hebergement']); ?></p>
+                            <p><strong>Restauration:</strong> <?= htmlspecialchars($etape['restauration']); ?></p>
+                            <p><strong>Activités:</strong> <?= htmlspecialchars($etape['activites']); ?></p>
+                            <p><strong>Transport:</strong> <?= htmlspecialchars($etape['transport']); ?></p>
+                            <p><strong>Nombre de personnes:</strong> <?= htmlspecialchars($etape['nb_personnes']); ?></p>
+                            <p><strong>Prix:</strong> <?= htmlspecialchars($etape['prix']); ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>Aucun voyage trouvé.</p>
+    <?php endif; ?>
+</div>
+
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <?php if ($page > 1): ?>
+            <a href="?page=<?= $page - 1; ?>" class="pagination-arrow">« Précédent</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+            <a href="?page=<?= $i; ?>" class="pagination-link <?= $i == $page ? 'active' : ''; ?>"><?= $i; ?></a>
+        <?php endfor; ?>
+
+        <?php if ($page < $total_pages): ?>
+            <a href="?page=<?= $page + 1; ?>" class="pagination-arrow">Suivant »</a>
         <?php endif; ?>
     </div>
 </body>
 </html>
-
