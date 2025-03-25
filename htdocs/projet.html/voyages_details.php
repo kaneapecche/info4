@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
@@ -44,12 +44,19 @@ if (!$voyage) {
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-            <ul>
-                <li><a href="accueil.php">Accueil</a></li>
-                <li><a href="présentation.php">Destination</a></li>
+        <ul>
+            <li><a href="accueil.php" class="button">Accueil</a></li>
+            <li><a href="présentation.php">Destination</a></li>
+
+            <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
+            <?php endif; ?>
+
+            <?php if(isset($_SESSION["login"])): ?>
                 <li><a href="profil.php">Profil</a></li>
-            </ul>
+                <li><a href="logout.php">Déconnexion</a></li>
+            <?php endif; ?>
+        </ul>
         </div>
     </div>
 
