@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,61 +9,6 @@
    <link rel="stylesheet" href="projet.css/apart.css">
 </head>
 <body>
-<?php
-// Vérifier si des données ont bien été envoyées
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Récupération des données du formulaire
-    $nom = $_POST["nom"] ?? "";
-    $prenom = $_POST["prenom"] ?? "";
-    $email = $_POST["email"] ?? "";
-    $tel = $_POST["phone"] ?? "";
-    $birthday = $_POST["birthday"] ?? "";
-    $genre = $_POST["genre"] ?? "";
-    $login = $_POST["pseudo"] ?? "";
-    $password = $_POST["password"] ?? "";
-
-    // Ouvrir le fichier CSV
-    $file = "donnees/utilisateurs.csv";
-    $userExistant = false;
-
-    if (!file_exists($file)) {
-        touch($file); // Crée le fichier s'il n'existe pas
-    }
-
-    $user = fopen($file, "a+"); // Ouverture en lecture et écriture
-    if ($user) {
-        // Lire et vérifier si l'utilisateur existe déjà
-        rewind($user); // Repositionner le curseur au début du fichier
-        fgetcsv($user, 10000, ';'); // Lire et ignorer la première ligne (l'en-tête)
-        while (($info = fgetcsv($user, 10000, ';')) !== false) {
-            if (count($info) < 7) continue; // Éviter les lignes incomplètes
-
-            if ($login === $info[6] || $email === $info[2] || $tel === $info[3]) {
-                $userExistant = true;
-                header("Location: inscription.php");
-                break; // Pas besoin de continuer à lire
-            }
-        }
-
-        // Ajouter l'utilisateur s'il n'existe pas encore
-        if (!$userExistant) {
-            fputcsv($user, [$nom, $prenom, $email, $tel, $birthday, $genre, $login, $password], ';');
-        }
-
-        fclose($user);
-        $_SESSION["login"] = $login;
-        $_SESSION["email"] = $email;
-        $_SESSION["tel"] = $tel;
-    
-        // Redirection vers la page d'accueil ou le profil
-        header("Location: accueil.php");
-        exit();
-    } else {
-        echo "Erreur lors de l'ouverture du fichier.";
-    }
-}
-?>
-
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
@@ -85,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <br>
     <?php 
         if (!isset($_SESSION['email'])) {
-            header("Location: login.php"); // Redirige vers la connexion si non connecté
+            header("Location: connexion.php"); // Redirige vers la connexion si non connecté
             exit();
         }
         $user_login = $_SESSION['login']; // L'email est utilisé comme identifiant unique
@@ -127,34 +72,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
        <form action="https://www.cafe-it.fr/cytech/post.php" method="post" >
            <label for="nom">Nom:</label>
            <input class="fill" type="text"  id="nom" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" disabled>
-           <input class="button" type="submit" value="✏️">
+           <button class="button" type="button">✏️</button>
            <br/>
            <label for="prenom">Prenom:</label>
            <input class="fill" type="text" id="prenom" name="prenom" value=<?= htmlspecialchars($user['prenom']) ?> disabled>
-           <input class="button" type="submit" value="✏️">
+           <button class="button" type="button">✏️</button>
            <br/>
            <label for="email">Adresse e-mail:</label>
            <input class="fill" type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" disabled>
-           <input class="button" type="submit" value="✏️">
+           <button class="button" type="button">✏️</button>
            <br/><br/>
            <label for="birthday">Date de naissance:</label>
            <input type="date" id="birthday" name="birthday" value="<?= htmlspecialchars($user['date_de_naissance']) ?>" disabled>
-           <input class="button" type="submit" value="✏️">
+           <button class="button" type="button">✏️</button>
            <br/><br/>
            <label for="genre">Genre:</label>
            <input type="radio" name="genre" value="femme" <?= $user['genre'] == 'femme' ? 'checked' : '' ?> disabled>Femme
-           <input type="radio" name="genre" value="homme" checked <?= $user['genre'] == 'homme' ? 'checked' : '' ?> disabled>Homme
-           <input class="button" type="submit" value="✏️">
+           <input type="radio" name="genre" value="homme" <?= $user['genre'] == 'homme' ? 'checked' : '' ?> disabled>Homme
+           <button class="button" type="button">✏️</button>
            <br/><br/>
            <label for="phone">Téléphone</label>
            <input class="fill" type="tel" id="phone" name="phone" value="<?= htmlspecialchars($user['telephone']) ?>" disabled>
-           <input class="button" type="submit" value="✏️">
+           <button class="button" type="button">✏️</button>
            <br/><br/>
            <label for="password">Mot de passe</label>
            <input class="fill" type="password" id="passeword" name="password" value="<?= htmlspecialchars($user['mot_de_passe']) ?>" disabled>
-           <input class="button" type="submit" value="✏️">
+           <button class="button" type="button">✏️</button>
            <br/><br/>
-           <input class="button" type="submit" value="Modifier">
+           <button class="button" type="button">Modifier</button>
        </form>
        <h5>Si vous êtes administrateur :</h5>
        <ul class="center-list">
