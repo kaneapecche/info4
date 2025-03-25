@@ -72,7 +72,7 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
         </select>
       </div>
 </div>
- 
+
 <div class="contained">
         <?php if (!empty($voyages_limites)) { ?>
             <?php foreach ($voyages_limites as $index => $valeur) { ?>  
