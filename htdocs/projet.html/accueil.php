@@ -1,5 +1,5 @@
 
-<?php
+   <?php
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
@@ -16,6 +16,7 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
 <meta charset="UTF-8">
 <link rel="stylesheet" href="projet.css/root.css">
 <link rel="stylesheet" href="projet.css/login.css">
+<link rel="stylesheet" href="projet.css/profil.css">
 <title> SereniTrip </title>
 <link rel="shortcut icon" href="image/logo.png" type="image/x-icon">
 
@@ -42,26 +43,26 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
    🍃 Voyager autrement – Conseils pour un voyage éco-responsable et équilibré. <br>
   
    Prenez le temps, respirez, explorez. Votre voyage bien-être commence ici. 💙✨</h4>
+   <h2>🌟 Voyages à la Une 🌟</h2>
 
-   <div class="contained">
-    <?php foreach ($voyagesAlaUne as $voyage) { ?>
-        <<div class="voyage-card">
-    <img src="<?php echo htmlspecialchars($voyage['image']); ?>" alt="Image de <?php echo htmlspecialchars($voyage['titre']); ?>" width="300">
-    <h3><?php echo htmlspecialchars($voyage['titre']); ?></h3>
-    
-    <!-- Vérifier si la clé 'description' existe avant de l'afficher -->
-    <p>
-        <?php echo isset($voyage['description']) ? htmlspecialchars($voyage['description']):"description"; ?>
-    </p>
-
-    <a href="personnalisation_voyage.php?id=<?php echo $voyage['id']; ?>">🌍 Voir plus</a>
+<div class="accueil">
+   <?php foreach ($voyagesAlaUne as $voyage) { ?>
+      <div class="accueil-card">
+         <img src="<?php echo htmlspecialchars($voyage['image']); ?>" alt="Image de <?php echo htmlspecialchars($voyage['titre']); ?>" width="300">
+         <h3><?php echo htmlspecialchars($voyage['titre']); ?></h3>
+         <p>
+            <?php echo isset($voyage['description']) ? htmlspecialchars($voyage['description']) : "Aucune description disponible."; ?>
+         </p>
+         <a href="personnalisation_voyage.php?id=<?php echo $voyage['id']; ?>">🌍 Voir plus</a>
+      </div>
+   <?php } ?>
 </div>
 
-    <?php } ?>
+   
    <ul class="center-list">
       <li><a href="présentation.php">Commencez votre aventure dès maintenant !</a></li>
    </ul>
-   <h2>🌟 Voyages à la Une</h2>
+  
 
 </div>
 </body>
