@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
    <?php
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
