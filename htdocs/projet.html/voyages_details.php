@@ -9,6 +9,7 @@ if (!$voyages) {
 
 $id_voyage = isset($_GET['id']) ? intval($_GET['id']) : null;
 
+
 if ($id_voyage === null) {
     die(" Erreur : Aucun ID reçu dans l'URL.");
 }
@@ -35,6 +36,7 @@ if (!$voyage) {
    <link rel="stylesheet" href="projet.css/root.css">
    <link rel="stylesheet" href="projet.css/apart.css">
    <link rel="stylesheet" href="projet.css/voyages.css">
+   
 
 
    </head>
