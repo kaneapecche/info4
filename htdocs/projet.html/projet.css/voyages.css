@@ -1,4 +1,3 @@
-
 .voyages-details ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
@@ -15,6 +14,7 @@
     text-align: center; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     height: 350px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
@@ -56,4 +56,8 @@
     color: rgb(128, 83, 83); 
     margin-bottom: 10px;
 }
+
+
+
+
 
