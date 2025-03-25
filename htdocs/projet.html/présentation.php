@@ -1,4 +1,5 @@
-<?php
+<?php 
+session_start();
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 $type_voyage = isset($_GET['type-voyage']) ? $_GET['type-voyage'] : 'tout'; // 'tout' par défaut
@@ -34,12 +35,19 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-    <ul class="boutton">
-        <li><a href="accueil.php">Accueil</a></li>
-        <li><a href="présentation.php">Destination</a></li>
-        <li><a href="connexion.php">Connexion</a></li>
-        <li><a href="profil.php">Profil</a></li>
-     </ul>
+        <ul>
+            <li><a href="accueil.php" class="button">Accueil</a></li>
+            <li><a href="présentation.php">Destination</a></li>
+
+            <?php if(!isset($_SESSION["login"])): ?>
+                <li><a href="connexion.php">Connexion</a></li>
+            <?php endif; ?>
+
+            <?php if(isset($_SESSION["login"])): ?>
+                <li><a href="profil.php">Profil</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
+            <?php endif; ?>
+        </ul>
 
    <h1><i>SereniTrip</i></h1>Le voyage qui vous ressource.🧘‍♀️
    <form action="/recherche" method="get">
