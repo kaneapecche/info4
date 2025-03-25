@@ -2,17 +2,28 @@
 session_start();
 
 // Vérifier si la session contient bien les informations du voyage
-if (!isset($_SESSION['voyage']) || !is_array($_SESSION['voyage'])) {
-    die("<h2>Erreur : Aucune donnée de voyage trouvée.</h2>");
+//if (!isset($_SESSION['voyage']) || !is_array($_SESSION['voyage'])) {
+   // die("<h2>Erreur : Aucune donnée de voyage trouvée.</h2>");
+//}
+
+$json = file_get_contents('voyages.json');
+$voyages = json_decode($json, true);
+
+$voyage_trouver = null; // Initialisation
+
+foreach ($voyages as $voyage) {
+    if ($voyage['id'] == 1) {
+        $voyage_trouver = $voyage;
+        break; // Arrêter la boucle dès qu'on trouve le bon voyage
+    }
 }
 
-$voyage = $_SESSION['voyage'];
 
 // Vérifier les clés avant de les utiliser
 $titre = isset($voyage['titre']) ? htmlspecialchars($voyage['titre']) : "Non spécifié";
 $date_debut = isset($voyage['dates']['debut']) ? htmlspecialchars($voyage['dates']['debut']) : "Non spécifié";
 $date_fin = isset($voyage['dates']['fin']) ? htmlspecialchars($voyage['dates']['fin']) : "Non spécifié";
-$montant = isset($voyage['prix_total']) ? number_format($voyage['prix_total'], 2, '.', '') : "0.00";
+$montant = isset($voyage['prix']) ? number_format($voyage['prix'], 2, '.', '') : "0.00";
 
 $transaction_id = uniqid();
 $vendeur = "MI-1_A";
@@ -34,7 +45,7 @@ if (isset($_GET['status'])) {
     if ($control_recu !== $control_verif) {
         die("<h2>Erreur de sécurité : données invalides.</h2>");
     }
-
+ 
     if ($status === "accepted") {
         // Enregistrer la transaction
         $paiements = json_decode('paiements.json') ? json_decode(file_get_contents('paiements.json'), true) : [];
@@ -63,7 +74,6 @@ if (isset($_GET['status'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Paiement</title>
@@ -84,3 +94,4 @@ if (isset($_GET['status'])) {
     </form>
 </body>
 </html>
+
