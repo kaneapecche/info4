@@ -1,25 +1,20 @@
 <?php 
 session_start();
 
-// Vérifier si la session contient bien les informations du voyage
-//if (!isset($_SESSION['voyage']) || !is_array($_SESSION['voyage'])) {
-   // die("<h2>Erreur : Aucune donnée de voyage trouvée.</h2>");
-//}
-
+// Charger les données des voyages
 $json = file_get_contents('voyages.json');
 $voyages = json_decode($json, true);
 
-$voyage_trouver = null; // Initialisation
-
+// Recherche du voyage par ID
+$voyage_trouver = null;
 foreach ($voyages as $voyage) {
     if ($voyage['id'] == 1) {
         $voyage_trouver = $voyage;
-        break; // Arrêter la boucle dès qu'on trouve le bon voyage
+        break;
     }
 }
 
-
-// Vérifier les clés avant de les utiliser
+// Vérification des données du voyage
 $titre = isset($voyage['titre']) ? htmlspecialchars($voyage['titre']) : "Non spécifié";
 $date_debut = isset($voyage['dates']['debut']) ? htmlspecialchars($voyage['dates']['debut']) : "Non spécifié";
 $date_fin = isset($voyage['dates']['fin']) ? htmlspecialchars($voyage['dates']['fin']) : "Non spécifié";
@@ -27,56 +22,22 @@ $montant = isset($voyage['prix']) ? number_format($voyage['prix'], 2, '.', '') :
 
 $transaction_id = uniqid();
 $vendeur = "MI-1_A";
-$retour_url = "http://localhost/paiement.php";
+$retour_url = "http://localhost/paiement_confirmation.php"; // URL après paiement
 
 // Générer le contrôle API
 $control = md5($transaction_id . "#" . $montant . "#" . $vendeur . "#" . $retour_url . "#");
 
-// Vérifier si c'est un retour de paiement de CY Bank
-if (isset($_GET['status'])) {
-    $status = $_GET['status']; // paiement accepté ou refusé
-    $transaction = $_GET['transaction'];
-    $montant_recu = $_GET['montant'];
-    $control_recu = $_GET['control'];
-
-    // Vérification de la validité des données
-    $control_verif = md5($transaction . "#" . $montant_recu . "#" . $vendeur . "#" . $status . "#");
-
-    if ($control_recu !== $control_verif) {
-        die("<h2>Erreur de sécurité : données invalides.</h2>");
-    }
- 
-    if ($status === "accepted") {
-        // Enregistrer la transaction
-        $paiements = json_decode('paiements.json') ? json_decode(file_get_contents('paiements.json'), true) : [];
-        $paiements[] = [
-            "utilisateur" => $_SESSION['login'],
-            "voyage" => $_SESSION['voyage'],
-            "montant" => $montant_recu,
-            "transaction" => $transaction,
-            "date" => date("Y-m-d H:i:s")
-        ];
-        file_put_contents('paiements.json', json_encode($paiements, JSON_PRETTY_PRINT));
-
-        // Afficher la confirmation
-        //recapitulatif si le paiement est accepter
-        echo "<h2>Paiement validé</h2>";
-        echo "<p>Votre réservation est confirmée.</p>";
-        echo "<a href='profil.php'>Voir mes voyages</a>";
-        exit();
-    } else { // Si le paiement est refusé
-        echo "<h2>Paiement refusé</h2>";
-        echo "<p>Veuillez vérifier vos informations bancaires.</p>";
-        echo "<a href='paiement.php'>Réessayer</a> ou <a href='voyage_personnalisation.php'>Modifier mon voyage</a>";
-        exit();
-    }
-}
 ?>
 
 <!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Paiement</title>
+    <title>Paiement du voyage</title>
+   <link rel="stylesheet" href="root.css">
+   <link rel="stylesheet" href="login.css">
+   <link rel="stylesheet" href="voyages.css">
+</head>
 </head>
 <body>
     <h2>Paiement du voyage</h2>
@@ -84,14 +45,17 @@ if (isset($_GET['status'])) {
     <p><strong>Dates :</strong> <?= $date_debut . " - " . $date_fin; ?></p>
     <p><strong>Prix :</strong> <?= $montant; ?>€</p>
 
-    <form action="https://www.plateforme-smc.fr/cybank/index.php" method="POST">
+    <!-- Formulaire qui envoie vers une nouvelle page pour entrer les informations de la carte -->
+    <form action="transaction.php" method="GET">
         <input type="hidden" name="transaction" value="<?= $transaction_id; ?>">
         <input type="hidden" name="montant" value="<?= $montant; ?>">
         <input type="hidden" name="vendeur" value="<?= $vendeur; ?>">
         <input type="hidden" name="retour" value="<?= $retour_url; ?>">
         <input type="hidden" name="control" value="<?= $control; ?>">
-        <button type="submit">Valider</button>
+
+        <button type="submit">Valider et procéder au paiement</button>
     </form>
 </body>
 </html>
+
 
