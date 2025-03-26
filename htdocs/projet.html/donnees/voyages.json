@@ -1,10 +1,11 @@
 [
   {
-  "id": 0,
+  "id": 1,
   "titre": "Voyage 1: Bain thermal en Islande",
   "texte": "Relaxez-vous tout en ayant une belle vue",
   "image": "islande.jpg",
   "prix":"2800",
+  "type": "Bain",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -80,11 +81,12 @@
 }, 
 
 {
-  "id": 1,
+  "id": 2,
   "titre": "Voyage 2: Spa en Suisse",
   "texte": "Le rendez-vous du bien-être",
   "image": "suisse.jpg",
   "prix":"2750",
+  "type": "Spa",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -160,11 +162,12 @@
 
 },
 {
-  "id": 2,
+  "id": 3,
   "titre": "Voyage 3: Thalassothérapie en France ",
   "texte": "Un bain de mer pour le corps et l'esprit",
   "image": "france.jpg",
   "prix":"2400",
+   "type": "thalassothérapie",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -239,11 +242,12 @@
   ]
 },
 {
-  "id": 3,
+  "id": 4,
   "titre": "Voyage 4: Yoga en Inde",
   "texte": "Profitez d'un voyage intérieur à chaque posture",
   "image": "inde.jpg",
   "prix":"2700",
+   "type": "Yoga",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -319,11 +323,12 @@
   
 },
 {
-  "id": 4,
+  "id": 5,
   "titre": "Voyage 5: Hammam au Maroc",
   "texte": "Un cocon pour rêver éveillé",
   "image": "maroc.jpg",
   "prix":"2950",
+   "type": "Hammam",
   "etapes": [
   {
       "titre": "Jour 1",
@@ -399,11 +404,12 @@
 
 },
 {
-  "id": 5,
+  "id": 6,
   "titre": "Voyage 6: Jacuzzi en Autriche",
   "texte": "Plongez dans les bulles du bonheur",
   "image": "autriche.jpg",
   "prix":"3100",
+  "type": "Jacuzzi",
   "etapes": [
   {
       "titre": "Jour 1",
@@ -478,11 +484,12 @@
 ]
 },
 {
-  "id": 6,
+  "id": 7,
  "titre": "Voyage 7: Bain de fleurs dans la jungle tropicales du Costa Rica",
  "texte":"Plongez dans un océan de fleurs et laissez la jungle vous envoûter",
  "image":"bain_fleur.jpg",
  "prix":"3300",
+  "type": "Bain",
  "etapes": [
   {
       "titre": "Jour 1",
@@ -558,11 +565,12 @@
 
 },
 {
-  "id": 7,
+  "id": 8,
   "titre": "Voyage 8: Sauna flottant sur un lac gelé en Finlande",
   "texte": "Chaleur nordique et glace polaire : un contraste envoûtant",
   "image":"Sauna_flottant.jpg",
   "prix":"4300",
+  "type": "Sauna",
   "etapes": [
   {
       "titre": "Jour 1",
@@ -637,11 +645,12 @@
 ]
 },
 {
-  "id": 8,
+  "id": 9,
   "titre": "Voyage 9: Massage sous une cascade naturelle en Indonésie",
   "texte": "Laissez l’eau et les mains expertes délier chaque tension",
   "image":"massage_cascade.jpg",
   "prix":"2900",
+   "type": "Massage",
   "etapes": [
   {
       "titre": "Jour 1",
@@ -716,11 +725,12 @@
 ]
 },
 {
-  "id": 9,
+  "id": 10,
   "titre": "Voyage 10: Flottaison en Mer Morte la nuit en Jordanie",
   "texte": "Léger comme l’air, bercé par les étoiles",
   "image":"flottaison_mm.jpg",
   "prix":"3900",
+   "type": "Flottaison", 
   "etapes": [
   {
       "titre": "Jour 1",
@@ -795,11 +805,12 @@
 ]
 },
 {
-  "id": 10,
+  "id": 11,
   "titre": "Voyage 11: Retraite zen au Japon",
   "texte": "Là où le silence parle à votre âme",
   "image":"retraite_zen.jpg",
   "prix":"4200",
+   "type": "Retraite",
   "etapes": [
   {
       "titre": "Jour 1",
@@ -874,11 +885,12 @@
 ]
 },
 {
-  "id": 11,
+  "id": 12,
   "titre": "Voyage 12: Jacuzzi privé dans un igloo de verre sous les aurores boréales en Suède",
   "texte": "Bulle de chaleur sous un ciel magique : vivez l’émerveillement nordique",
   "image": "Jacuzz_igloo.jpg",
   "prix":"4550€",
+   "type": "Jacuzzi",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -953,11 +965,12 @@
   ]
 },
 {
-  "id": 12,
+  "id": 13,
   "titre": "Voyage 13: Plages & Méditation au Maldives",
   "texte": "Respirez. Ressentez. Laissez-vous porter par l'instant ",
   "image":"maldive.jpg",
   "prix":"4800",
+   "type": "Plages",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -1032,11 +1045,12 @@
   ]
 },
 {
-  "id": 13,
+  "id": 14,
   "titre": "Voyage 14: Évasion nordique en Norvège",
   "texte": "Sous les lumières du Nord, trouvez votre paix intérieure",
   "image":"norvege.jpg",
   "prix":"3800",
+   "type": "Evasion",
   "etapes": [
       {
           "titre": "Jour 1",
@@ -1112,11 +1126,12 @@
 
 },
 {
-  "id": 14,
+  "id": 15,
   "titre": "Voyage 15: Yoga et nature à Bali",
   "texte": " Reconnectez-vous à l'esssentiel, au coeur de Bali",
   "image":"bali.jpg",
   "prix":"3400",
+   "type": "Yoga",
   "etapes": [
   {
       "titre": "Jour 1",
