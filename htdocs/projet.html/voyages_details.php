@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
@@ -44,15 +44,16 @@ if (!$voyage) {
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-        <ul>
-            <li><a href="accueil.php" class="button">Accueil</a></li>
+        
+<ul>
+            <li><a href="accueil.php">Accueil</a></li>
             <li><a href="présentation.php">Destination</a></li>
 
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
-            <?php endif; ?>
+         
 
-            <?php if(isset($_SESSION["login"])): ?>
+           
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="logout.php">Déconnexion</a></li>
             <?php endif; ?>
@@ -81,7 +82,7 @@ if (!$voyage) {
                         <strong>🍽️ Restauration :</strong> <?php echo htmlspecialchars($etape['restauration']); ?><br>
                         <strong>🚍 Transport :</strong> <?php echo htmlspecialchars($etape['transport']); ?><br>
                         <strong>👥 Nombre de personnes maximum :</strong> <?php echo htmlspecialchars($etape['nb_personnes']); ?><br>
-                        <strong>💰 Prix :</strong> <?php echo htmlspecialchars($etape['prix']); ?><br>
+                        <strong>💰 Prix :</strong> <?php echo htmlspecialchars($etape['prix']); ?>€<br>
                         
                     </li>
                 <?php } ?>
