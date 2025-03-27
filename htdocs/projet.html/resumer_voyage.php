@@ -8,7 +8,8 @@ if (!$voyages) {
     die("Erreur : Impossible de charger les données des voyages.");
 }
 
-$id_voyage = isset($_GET['id']) ? intval($_GET['id']) : null;
+
+$id_voyage = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($id_voyage === null) {
     die("Erreur : Aucun ID reçu dans l'URL.");
@@ -47,20 +48,28 @@ $totalPrix = 0;
    <link rel="stylesheet" href="projet.css/root.css">
    <link rel="stylesheet" href="projet.css/apart.css">
    <link rel="stylesheet" href="projet.css/voyages.css">
+
+   <script>
+
+        localStorage.setItem("totalPrix", <?php echo $totalPrix; ?>);
+    </script>
+
+
 </head>
 <body>
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-        <ul>
-            <li><a href="accueil.php" class="button">Accueil</a></li>
+        
+<ul>
+            <li><a href="accueil.php">Accueil</a></li>
             <li><a href="présentation.php">Destination</a></li>
 
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
-            <?php endif; ?>
+         
 
-            <?php if(isset($_SESSION["login"])): ?>
+           
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="logout.php">Déconnexion</a></li>
             <?php endif; ?>
@@ -95,9 +104,26 @@ $totalPrix = 0;
 
         <h3>💶 Montant total du voyage : <span><?php echo $totalPrix; ?> €</span></h3>
 
-        <a href="personnalisation_voyage.php?id=<?php echo $id_voyage; ?>" class="btn">Modifier ma personnalisation</a>
+        <a href="personnalisation_voyage.php?id=<?php echo $id_voyage; ?>" id="modifier">Modifier ma personnalisation</a>
+
         <a href="paiement.php?id=<?php echo $id_voyage; ?>" class="btn">Valider et payer</a>
+        
         <br><br>
     </div>
+    <script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const idVoyage = new URLSearchParams(window.location.search).get('id');
+
+        if (localStorage.getItem("totalPrix")) {
+            document.getElementById("totalPrix").innerText = localStorage.getItem("totalPrix") + " €";
+        }
+
+        if (idVoyage) {
+            document.getElementById("modifier").setAttribute("href", "personnalisation_voyage.php?id=" + idVoyage);
+        }
+    });
+</script>
+
 </body>
 </html>
