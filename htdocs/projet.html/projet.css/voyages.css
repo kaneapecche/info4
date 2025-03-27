@@ -1,60 +1,129 @@
-.voyages-details ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 20px;
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(183, 172, 172);
+    color: #333;
+    line-height: 1.6;
+}
+
+
+.voyages-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 20px;
+}
+
+
+.voyages-details {
+    width: 45%; 
+    background: rgb(183, 172, 172);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 450px; 
+}
+
+.voyages-details h1 {
+    color: rgb(120, 101, 101);
+    margin-bottom: 15px;
+}
+
+.voyages-details img {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* ✅ Liste des étapes */
+.voyages-details ul {
     list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
 .voyages-details ul li {
-    background-color: rgb(231, 224, 224);
+    background-color: #ecf0f1;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
-    text-align: center; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    height: 350px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-}
-
-.voyages-details ul li:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-}
-
-.voyages-details ul li strong {
-    font-weight: bold;
-    color: rgb(120, 101, 101); 
-}
-
-.voyages-details ul li h4 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: rgb(128, 83, 83); 
-}
-
-.voyages-details ul li p {
-    font-size: 1rem;
-    color: grey;
-    margin-bottom: 10px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
 .voyages-details ul li .etape-info {
-    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
 }
-
-.voyages-details ul li .etape-info:last-child {
-    margin-bottom: 0;
-}
-
 
 .voyages-details ul li i {
-    font-size: 2rem; 
-    color: rgb(128, 83, 83); 
-    margin-bottom: 10px;
+    font-size: 20px;
+    color: rgb(120, 101, 101);
+}
+
+
+#totalPrix {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-top: 20px; 
+}
+
+.voyages-details form {
+    margin-top: 20px;
+}
+
+.voyages-details input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.voyages-details input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .voyages-details {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .voyages-details ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .voyages-details ul li {
+        width: 100%;
+    }
+
+  
+    .voyages-details img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 
