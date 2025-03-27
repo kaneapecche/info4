@@ -8,11 +8,12 @@ if (!$voyages) {
     die("Erreur : Impossible de charger les données des voyages.");
 }
 
-$id_voyage = isset($_GET['id']) ? intval($_GET['id']) : null;
+$id_voyage = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($id_voyage === null) {
     die("Erreur : Aucun ID reçu dans l'URL.");
 }
+
 
 $voyage = null;
 foreach ($voyages as $v) {
@@ -44,32 +45,79 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    <link rel="stylesheet" href="projet.css/voyages.css">
 
    <script>
-        function updateTotal() {
-            let total = 0;
-            let checkboxes = document.querySelectorAll("input[name^='etapes_selectionnees']:checked");
+    document.addEventListener("DOMContentLoaded", function () {
+        const idVoyage = new URLSearchParams(window.location.search).get('id');
+        if (!idVoyage) return;
 
-            checkboxes.forEach((checkbox) => {
-                let index = checkbox.dataset.index;
-                let prixParPersonne = parseFloat(checkbox.dataset.prix);
-                let personnes = document.querySelector("input[name='nb_personnes[" + index + "]']").value;
+        
+        const savedSelections = JSON.parse(localStorage.getItem("personnalisation_" + idVoyage)) || {};
 
-                total += prixParPersonne * personnes;
-            });
+        let total = 0;
+        document.querySelectorAll("input[name^='etapes_selectionnees']").forEach((checkbox) => {
+            let index = checkbox.dataset.index;
+            if (savedSelections[index]) {
+                checkbox.checked = true;
+                let personnesInput = document.querySelector("input[name='nb_personnes[" + index + "]']");
+                if (personnesInput) {
+                    personnesInput.value = savedSelections[index].nbPersonnes;
+                }
+                total += parseFloat(checkbox.dataset.prix) * savedSelections[index].nbPersonnes;
+            }
+        });
 
-            document.getElementById("totalPrix").innerText = total.toFixed(2) + " €";
-        }
-   </script>
-</head>
-<body>
+        document.getElementById("totalPrix").innerText = total.toFixed(2) + " €";
+
+        
+        document.querySelectorAll("input[name^='etapes_selectionnees'], input[name^='nb_personnes']").forEach(input => {
+            input.addEventListener("change", saveSelections);
+        });
+    });
+
+    function saveSelections() {
+        const idVoyage = new URLSearchParams(window.location.search).get('id');
+        if (!idVoyage) return;
+
+        let selections = {};
+        let total = 0;
+
+        document.querySelectorAll("input[name^='etapes_selectionnees']:checked").forEach((checkbox) => {
+            let index = checkbox.dataset.index;
+            let prixParPersonne = parseFloat(checkbox.dataset.prix);
+            let personnesInput = document.querySelector("input[name='nb_personnes[" + index + "]']");
+            let nbPersonnes = personnesInput ? parseInt(personnesInput.value) : 1;
+
+            selections[index] = { nbPersonnes: nbPersonnes };
+            total += prixParPersonne * nbPersonnes;
+        });
+
+       
+        localStorage.setItem("personnalisation_" + idVoyage, JSON.stringify(selections));
+        localStorage.setItem("totalPrix", total.toFixed(2));
+
+        
+        document.getElementById("totalPrix").innerText = total.toFixed(2) + " €";
+    }
+</script>
+</body>
+
+
+
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-            <ul>
-                <li><a href="accueil.php">Accueil</a></li>
-                <li><a href="présentation.php">Destination</a></li>
+<ul>
+            <li><a href="accueil.php">Accueil</a></li>
+            <li><a href="présentation.php">Destination</a></li>
+
+            <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
+         
+
+           
                 <li><a href="profil.php">Profil</a></li>
-            </ul>
+                <li><a href="logout.php">Déconnexion</a></li>
+            <?php endif; ?>
+        </ul>
         </div>
     </div>
 
@@ -117,6 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h3>💶 Total estimé : <span id="totalPrix">0 €</span></h3>
 
             <button type="submit">✨ Voir le récapitulatif</button>
+
             <br><br>
         </form>
     </div>
