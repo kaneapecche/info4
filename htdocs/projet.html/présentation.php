@@ -70,13 +70,12 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
                 <option value="Massage" <?= in_array('Massage', $options) ? 'selected' : '' ?>>Massage</option>
                 <option value="Relaxation" <?= in_array('Relaxation', $options) ? 'selected' : '' ?>>Relaxation</option>
                 <option value="Yoga" <?= in_array('Yoga', $options) ? 'selected' : '' ?>>Yoga</option>
-                <option value="evasion" <?= in_array('Evasion', $options) ? 'selected' : '' ?>>Evasion</option>
+                <option value="Evasion" <?= in_array('Evasion', $options) ? 'selected' : '' ?>>Evasion</option>
                 <option value="Jacuzzi" <?= in_array('Jacuzzi', $options) ? 'selected' : '' ?>>Jacuzzi</option>
                 <option value="Plages" <?= in_array('Plages', $options) ? 'selected' : '' ?>>Plages</option>
                 <option value="Retraite" <?= in_array('Retraite', $options) ? 'selected' : '' ?>>Retraite</option>
                 <option value="Flottaison" <?= in_array('Flottaison', $options) ? 'selected' : '' ?>>Flottaison</option>
                 <option value="Sauna" <?= in_array('Sauna', $options) ? 'selected' : '' ?>>Sauna</option>
-                <option value="Bain" <?= in_array('Bain', $options) ? 'selected' : '' ?>>Bain</option>
                 <option value="Hammam" <?= in_array('Hammam', $options) ? 'selected' : '' ?>>Hammam</option>
                 <option value="thalassothérapie" <?= in_array('thalassothérapie', $options) ? 'selected' : '' ?>>thalassothérapie</option>
             </select>
@@ -130,3 +129,4 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
 <br><br>
 </body>
 </html>
+
