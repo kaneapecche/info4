@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+include 'getapikey.php';
 // Charger les données des voyages
 $json = file_get_contents('voyages.json');
 $voyages = json_decode($json, true);
@@ -8,7 +8,7 @@ $voyages = json_decode($json, true);
 // Recherche du voyage par ID
 $voyage_trouver = null;
 foreach ($voyages as $voyage) {
-    if ($voyage['id'] == 1) {
+    if ($voyage['id'] == $voyages) {
         $voyage_trouver = $voyage;
         break;
     }
@@ -57,5 +57,3 @@ $control = md5($transaction_id . "#" . $montant . "#" . $vendeur . "#" . $retour
     </form>
 </body>
 </html>
-
-
