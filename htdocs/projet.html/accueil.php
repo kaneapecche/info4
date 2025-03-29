@@ -29,7 +29,8 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
 <ul>
             <li><a href="accueil.php" class="button">Accueil</a></li>
             <li><a href="présentation.php">Destination</a></li>
-
+            <li><a href="connexion.php">Connexion</a></li>
+            <li><a href="profil.php">Profil</a></li>
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
             <?php endif; ?>
