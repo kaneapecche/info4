@@ -48,6 +48,8 @@ foreach ($voyage['etapes'] as $index => $etape) {
 $transaction_id = uniqid();
 $vendeur = "MI-1_A";
 $retour_url = "paiement_confirmation.php";
+include_once('getAPIKey.php');
+$api_key = getAPIKey($vendeur);
 $control = md5($transaction_id . "#" . $totalPrix . "#" . $vendeur . "#" . $retour_url . "#");
 
 ?>
