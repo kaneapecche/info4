@@ -1,6 +1,6 @@
 <?php
 // Charger les voyages depuis le fichier JSON
-$json = file_get_contents('voyages.json');
+$json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
@@ -37,12 +37,12 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
-   <link rel="stylesheet" href="root.css">
-   <link rel="stylesheet" href="login.css">
+   <link rel="stylesheet" href="projet.css/root.css">
+   <link rel="stylesheet" href="projet.css/login.css">
 </head>
 <body>
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
             <ul>
             <li><a href="accueil.php" class="button">Accueil</a></li>
