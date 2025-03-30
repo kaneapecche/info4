@@ -18,8 +18,8 @@ $control = $_POST['control'];
 <head>
     <meta charset="UTF-8">
     <title>Informations de paiement</title>
-    <link rel="stylesheet" href="root.css">
-    <link rel="stylesheet" href="voyages.css">
+    <link rel="stylesheet" href="projet.css/root.css">
+    <link rel="stylesheet" href="projet.css/voyages.css">
 </head>
 <body>
 
