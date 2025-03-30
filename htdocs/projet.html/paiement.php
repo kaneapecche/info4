@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 $id_voyage = $_GET['id'];
 
 // Charger les voyages
-$json = file_get_contents('voyages.json');
+$json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
 if (!$voyages) {
@@ -57,8 +57,8 @@ $control = md5($transaction_id . "#" . $totalPrix . "#" . $vendeur . "#" . $reto
 <head>
     <meta charset="UTF-8">
     <title>Paiement du voyage</title>
-    <link rel="stylesheet" href="root.css">
-    <link rel="stylesheet" href="voyages.css">
+    <link rel="stylesheet" href="projet.css/root.css">
+    <link rel="stylesheet" href="projet.css/voyages.css">
 </head>
 <body>
 
