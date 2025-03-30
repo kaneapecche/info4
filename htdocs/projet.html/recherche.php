@@ -55,12 +55,22 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
     <div class="navigation">
         <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-            <ul class="boutton">
-                <li><a href="accueil.php">Accueil</a></li>
-                <li><a href="presentation.php">Destination</a></li>
+            <ul>
+            <li><a href="accueil.php" class="button">Accueil</a></li>
+            <li><a href="présentation.php">Destination</a></li>
+
+            <?php if(!isset($_SESSION["email"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
+            <?php endif; ?>
+
+            <?php if(isset($_SESSION["email"])): ?>
                 <li><a href="profil.php">Profil</a></li>
-            </ul>
+                <li><a href="logout.php">Déconnexion</a></li>
+                <?php if(isset($data[8]) && $data[8] == "admin"): ?>
+                    <li><a href="admin.php">Admin</a></li>
+                <?php endif; ?>
+            <?php endif; ?>
+        </ul>
         </div>
     </div>
 
