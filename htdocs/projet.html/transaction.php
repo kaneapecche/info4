@@ -33,16 +33,16 @@ $control = $_POST['control'];
     <input type="hidden" name="control" value="<?= $control; ?>">
 
     <label for="nom_du_titulaire">Nom du titulaire :</label>
-    <input type="text" id="nom_du_titulaire" name="nom_du_titulaire" required>
+    <input type="text" id="nom_du_titulaire" name="nom_du_titulaire" required placeholder="Marie Curie Macron"><br>
 
     <label for="numero_carte">Numéro de carte :</label>
-    <input type="text" id="numero_carte" name="numero_carte" required>
+    <input type="text" id="numero_carte" name="numero_carte" required placeholder="1258 1452 6983 5472"><br>
 
     <label for="expiration">Date d'expiration :</label>
-    <input type="text" id="expiration" name="expiration" required placeholder="MM/AA">
+    <input type="text" id="expiration" name="expiration" required placeholder="MM/AA"><br>
 
     <label for="cryptogramme">Cryptogramme :</label>
-    <input type="text" id="cryptogramme" name="cryptogramme" required>
+    <input type="text" id="cryptogramme" name="cryptogramme" required placeholder="523"><br>
 
     <button type="submit">Valider et payer</button>
 </form>
