@@ -22,8 +22,8 @@ $control_calculé = md5($transaction_id . "#" . $montant . "#MI-1_A#" . $status 
 <head>
     <meta charset="UTF-8">
     <title>Résultat du paiement</title>
-    <link rel="stylesheet" href="root.css">
-    <link rel="stylesheet" href="voyages.css">
+    <link rel="stylesheet" href="projet.css/root.css">
+    <link rel="stylesheet" href="projet.css/voyages.css">
 </head>
 <body>
 
