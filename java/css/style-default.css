@@ -1,0 +1,119 @@
+/* === STYLE PAR DÉFAUT CLAIR === */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(183, 172, 172); 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+ul {
+    display: flex; 
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+ul li {
+    margin-right: 10px;
+}
+
+ul li a {
+    background-color: rgb(128, 83, 83);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+ul li a:hover {
+    background-color: #555;
+}
+
+
+h1 {
+    font-size: 2.5rem;
+    color: rgb(120, 101, 101);
+}
+
+
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.accueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.accueil-card {
+    width: 280px;
+    background-color: rgb(231, 224, 224);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.accueil-card:hover {
+    transform: scale(1.05);
+}
+
+.accueil-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.accueil-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.accueil-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.accueil-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.accueil-card a:hover {
+    text-decoration: underline;
+}
+
+/* === AUTRES === */
+.button, .fill {
+    background-color: rgb(183, 172, 172);
+}
+
+#theme-switcher {
+    background-color: rgb(128, 83, 83); /* Couleur de fond */
+    color: white; /* Texte blanc */
+    padding: 8px 15px; /* Espacement interne */
+    text-decoration: none; /* Pas de soulignement */
+    border-radius: 10px; /* Coins arrondis */
+    font-size: 16px; /* Taille du texte */
+    font-family: Arial, sans-serif; /* Police simple */
+    border: none; /* Retirer la bordure par défaut */
+    transition: background-color 0.3s ease; /* Transition pour la couleur de fond */
+  }
+  
+  
