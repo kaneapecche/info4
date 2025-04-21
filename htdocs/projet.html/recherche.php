@@ -1,6 +1,6 @@
 <?php
 // Charger les voyages depuis le fichier JSON
-$json = file_get_contents('donnees/voyages.json');
+$json = file_get_contents('voyages.json');
 $voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
@@ -46,31 +46,28 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip - Recherche</title>
-   <link rel="stylesheet" href="projet.css/root.css">
-   <link rel="stylesheet" href="projet.css/login.css">
-   <link rel="stylesheet" href="projet.css/voyage.css">
-   <link rel="stylesheet" href="projet.css/apart.css">
+   <link rel="stylesheet" href="root.css">
+   <link rel="stylesheet" href="login.css">
+   <link rel="stylesheet" href="voyage.css">
+   <link rel="stylesheet" href="apart.css">
+   <link id="theme-css" rel="stylesheet" href="style-default.css">
+
 </head>
 <body>
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
     <div class="navigation">
-        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-            <ul>
-            <li><a href="accueil.php" class="button">Accueil</a></li>
-            <li><a href="présentation.php">Destination</a></li>
-
-            <?php if(!isset($_SESSION["email"])): ?>
+            <ul class="boutton">
+                <li><a href="accueil.php">Accueil</a></li>
+                <li><a href="presentation.php">Destination</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
-            <?php endif; ?>
-
-            <?php if(isset($_SESSION["email"])): ?>
                 <li><a href="profil.php">Profil</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
-                <?php if(isset($data[8]) && $data[8] == "admin"): ?>
-                    <li><a href="admin.php">Admin</a></li>
-                <?php endif; ?>
-            <?php endif; ?>
-        </ul>
+            </ul>
         </div>
     </div>
 
@@ -111,6 +108,7 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
             <a href="?<?= http_build_query(array_merge($_GET, ["page" => $page + 1])) ?>" class="pagination-arrow">Suivant »</a>
         <?php } ?>
     </div>
+    <script src="script_couleur.js"></script>
 
 </body>
 </html>
