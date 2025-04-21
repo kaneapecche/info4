@@ -1,6 +1,6 @@
 <?php
 // Charger les voyages depuis le fichier JSON
-$json = file_get_contents('donnees/voyages.json');
+$json = file_get_contents('voyages.json');
 $voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
@@ -37,26 +37,25 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
-   <link rel="stylesheet" href="projet.css/root.css">
-   <link rel="stylesheet" href="projet.css/login.css">
+   <link rel="stylesheet" href="root.css">
+   <link rel="stylesheet" href="login.css">
+   <link id="theme-css" rel="stylesheet" href="style-default.css">
 </head>
 <body>
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
     <div class="navigation">
-        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
-            <ul>
-            <li><a href="accueil.php" class="button">Accueil</a></li>
-            <li><a href="présentation.php">Destination</a></li>
-
-            <?php if(!isset($_SESSION["login"])): ?>
+            <ul class="boutton">
+                <li><a href="accueil.php">Accueil</a></li>
+                <li><a href="presentation.php">Destination</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
-            <?php endif; ?>
-
-            <?php if(isset($_SESSION["login"])): ?>
                 <li><a href="profil.php">Profil</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
-            <?php endif; ?>
-        </ul>
+            </ul>
             
             </form><br/>
         </div>
@@ -88,6 +87,10 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
             </select>
         </div><br>
         <input type="number" name="personnes" placeholder="Personnes supplémentaires" value="<?= htmlspecialchars($personnes_supplementaires) ?>"><br><br>
+        <div class="tri">
+    <label for="tri">Trier par :</label>
+    
+</div>
         <button type="submit">Filtrer</button>
     </form>
 
@@ -99,6 +102,11 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
                     <h4><?php echo htmlspecialchars($valeur['titre']); ?>– <?php echo htmlspecialchars($valeur['prix']); ?> Tout Compris ! ✨ </h4>
                     <p><?php echo htmlspecialchars($valeur['texte']); ?></p>
                     <p><?php echo htmlspecialchars($valeur['type']); ?></p>
+                    prix="<?= $valeur['prix']; ?>"
+                    date-arrivee="<?= $valeur['date-arrivee']; ?>"
+                    date-depart="<?= $valeur['date-depart']; ?>"
+                    duree="<?= $valeur['duree']; ?>"
+                    etapes="<?= count($valeur['etapes'] ?? []) ?>">
                     <span>
                         <a href="voyages_details.php?id=<?php echo $offset + $index; ?>">
                             <img src="<?php echo htmlspecialchars($valeur['image']); ?>" width="250" height="180" alt="<?php echo htmlspecialchars($valeur['titre']); ?>" />
@@ -134,6 +142,10 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
          <?php } ?>
     </div>
 <br><br>
+
+<script src="script_couleur.js"></script>  
+   
+<script src="script_tri.js"></script>
+
 </body>
 </html>
-
