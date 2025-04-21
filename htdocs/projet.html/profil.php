@@ -59,8 +59,14 @@ include 'admin_view.php'; // Inclure la barre de navigation
    <title>SereniTrip</title>
    <link rel="stylesheet" href="projet.css/root.css">
    <link rel="stylesheet" href="projet.css/apart.css">
+   <link id="theme-css" rel="stylesheet" href="style-default.css">
 </head>
 <body>
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
@@ -158,5 +164,7 @@ include 'admin_view.php'; // Inclure la barre de navigation
            <?php endif; ?>
        </form>
    </fieldset></div>
+   <script src="script_couleur.js"></script>
+
 </body>
 </html>
