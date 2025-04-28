@@ -62,18 +62,17 @@ $totalPrix = 0;
         <div class="menu">
         
 <ul>
-            <li><a href="accueil.php">Accueil</a></li>
-            <li><a href="présentation.php">Destination</a></li>
+    <li><a href="accueil.php">Accueil</a></li>
+    <li><a href="présentation.php">Destination</a></li>
 
-            <?php if(!isset($_SESSION["login"])): ?>
-                <li><a href="connexion.php">Connexion</a></li>
-         
+    <?php if(!isset($_SESSION["login"])): ?>
+        <li><a href="connexion.php">Connexion</a></li>
+    <?php else: ?>
+        <li><a href="profil.php">Profil</a></li>
+        <li><a href="logout.php">Déconnexion</a></li>
+    <?php endif; ?>
+</ul>
 
-           
-                <li><a href="profil.php">Profil</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
-            <?php endif; ?>
-        </ul>
         </div>
     </div>
 
@@ -105,8 +104,10 @@ $totalPrix = 0;
         <h3>💶 Montant total du voyage : <span><?php echo $totalPrix; ?> €</span></h3>
 
         <a href="personnalisation_voyage.php?id=<?php echo $id_voyage; ?>" id="modifier">Modifier ma personnalisation</a>
+        
 
-        <a href="paiement.php?id=<?php echo $id_voyage; ?>" class="btn">Valider et payer</a>
+        <a href="ajouter_panier.php?id=<?php echo $id_voyage; ?>" class="btn">Ajouter au panier</a>
+  <a href="paiement.php?id=<?php echo $id_voyage; ?>" class="btn">Valider et payer</a>
         
         <br><br>
     </div>
@@ -127,3 +128,4 @@ $totalPrix = 0;
 
 </body>
 </html>
+        
