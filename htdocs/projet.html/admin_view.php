@@ -18,11 +18,16 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
     <link rel="stylesheet" href="projet.css/apart.css">
     <link rel="stylesheet" href="utilisateurs.css"> <!-- ton nouveau css -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link id="theme-css" rel="stylesheet" href="style-default.css">
 </head>
 <script src="admin.js"></script>
 
 <body>
-
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
@@ -82,6 +87,7 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
             <?php endif; ?>
         </div>
     </div>
+   <script src="script_couleur.js"></script>
 
 </body>
 </html>
