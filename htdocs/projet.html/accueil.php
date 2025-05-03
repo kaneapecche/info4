@@ -17,12 +17,18 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
 <link rel="stylesheet" href="projet.css/root.css">
 <link rel="stylesheet" href="projet.css/login.css">
 <link rel="stylesheet" href="projet.css/profil.css">
+<link id="theme-css" rel="stylesheet" href="style-default.css">
+
 <title> SereniTrip </title>
 <link rel="shortcut icon" href="image/logo.png" type="image/x-icon">
 
 </head>
 <body bgcolor="#b7acac " text="'white" link="black">
-
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
 <div class="navigation">
    <img src="image/logo.png" alt="logo du site web" width="100" class="image">
    <div class="menu">
@@ -68,7 +74,7 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
    <ul class="center-list">
       <li><a href="présentation.php">Commencez votre aventure dès maintenant !</a></li>
    </ul>
-  
+  <script src="script_couleur.js"></script>
 
 </div>
 </body>
