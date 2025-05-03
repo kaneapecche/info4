@@ -78,7 +78,7 @@ foreach ($panier as $id) {
 }
 
 echo "<h3>💸 Total général : $prix_total_general €</h3>";
-echo "<a href='paiement.php'>Valider et payer</a>";
+echo "<a href='paiement.php?id=$id'>Valider et payer</a>";
 ?>
 </body>
 </html>
