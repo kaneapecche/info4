@@ -36,11 +36,14 @@ if (!$voyage) {
    <link rel="stylesheet" href="projet.css/root.css">
    <link rel="stylesheet" href="projet.css/apart.css">
    <link rel="stylesheet" href="projet.css/voyages.css">
-   
-
-
-   </head>
+   <link id="theme-css" rel="stylesheet" href="style-default.css">
+</head>
 <body>
+    <select id="theme-switcher">
+    <option value="style-default.css">Clair</option>
+    <option value="style-dark.css">Sombre</option>
+    <option value="style-accessible.css">Malvoyant</option>
+    </select>
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
@@ -94,5 +97,6 @@ if (!$voyage) {
         <a href="personnalisation_voyage.php?id=<?php echo $id_voyage; ?>">✨ Personnaliser mon voyage</a><br><br>
     </div>
 <br><br>
+       <script src="script_couleur.js"></script>
 </body>
 </html>
