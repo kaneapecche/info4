@@ -1,15 +1,11 @@
 <?php
 session_start();
 
-$id = $_GET['id'] ?? null;
-if (!$id) die("ID manquant.");
+$voyageId = $_POST['voyageId'] ?? null;
 
-// Supprimer de chaque tableau session
-if (isset($_SESSION['panier'])) {
-    $_SESSION['panier'] = array_filter($_SESSION['panier'], fn($v) => $v != $id);
+if ($voyageId && isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array_filter($_SESSION['panier'], fn($id) => $id != $voyageId);
+    echo "Supprimé.";
+} else {
+    echo "Erreur.";
 }
-unset($_SESSION['personnalisation_panier'][$id]);
-unset($_SESSION['prix_personnalise_panier'][$id]);
-
-header("Location: panier.php");
-exit();
