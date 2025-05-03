@@ -20,9 +20,15 @@ $control = $_POST['control'];
     <title>Informations de paiement</title>
     <link rel="stylesheet" href="projet.css/root.css">
     <link rel="stylesheet" href="projet.css/voyages.css">
+    <link id="theme-css" rel="stylesheet" href="style-default.css">
+    
 </head>
 <body>
-
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
 <h2>💳 Entrez vos informations bancaires</h2>
 <p><strong>Montant :</strong> <?= number_format($montant, 2, '.', ''); ?> €</p>
 
@@ -46,6 +52,7 @@ $control = $_POST['control'];
 
     <button type="submit">Valider et payer</button>
 </form>
+<script src="script_couleur.js"></script>
 
 </body>
 </html>
