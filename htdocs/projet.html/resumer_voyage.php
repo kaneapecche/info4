@@ -128,4 +128,3 @@ $totalPrix = 0;
 
 </body>
 </html>
-        
