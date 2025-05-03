@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_GET['id'])) {
+if (!isset($_REQUEST['id'])) {
     die("Erreur : ID du voyage non spécifié.");
 }
 
@@ -80,4 +80,3 @@ $control = md5($transaction_id . "#" . $totalPrix . "#" . $vendeur . "#" . $reto
 
 </body>
 </html>
-
