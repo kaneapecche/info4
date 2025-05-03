@@ -21,11 +21,16 @@ if (empty($panier)) {
     <meta charset="UTF-8">
     <title>🧳 Mon Panier</title>
   <link rel="stylesheet" href="projet.css/root.css">
-   <link rel="stylesheet" href="projet.css/apart.css">
-   
+  <link rel="stylesheet" href="projet.css/apart.css">
+  <link id="theme-css" rel="stylesheet" href="style-default.css">
+
 </head>
 <body>
-
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
 <h1>🧳 Mon Panier</h1>
 
 <?php
@@ -80,5 +85,7 @@ foreach ($panier as $id) {
 echo "<h3>💸 Total général : $prix_total_general €</h3>";
 echo "<a href='paiement.php?id=$id'>Valider et payer</a>";
 ?>
+<script src="script_couleur.js"></script>
+
 </body>
 </html>
