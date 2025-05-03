@@ -12,9 +12,6 @@ $transaction_id = $_POST['transaction'];
 $montant = $_POST['montant'];
 $control_recu = $_POST['control'];
 $control_calculé = md5($transaction_id . "#" . $montant . "#MI-1_A#" . $status . "#");
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +21,15 @@ $control_calculé = md5($transaction_id . "#" . $montant . "#MI-1_A#" . $status 
     <title>Résultat du paiement</title>
     <link rel="stylesheet" href="projet.css/root.css">
     <link rel="stylesheet" href="projet.css/voyages.css">
+    <link id="theme-css" rel="stylesheet" href="style-default.css">
+
 </head>
 <body>
-
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
 <?php if ($status === "accepted") : ?>
     <h2>✅ Paiement validé !</h2>
     <p>Votre paiement de <?= number_format($montant, 2, '.', ''); ?> € a été accepté.</p>
@@ -36,6 +39,7 @@ $control_calculé = md5($transaction_id . "#" . $montant . "#MI-1_A#" . $status 
     <p>Le paiement a échoué. Veuillez vérifier vos informations et réessayer.</p>
     <a href="paiement.php?id=<?= $_POST['transaction']; ?>">Réessayer</a>
 <?php endif; ?>
+<script src="script_couleur.js"></script>
 
 </body>
 </html>
