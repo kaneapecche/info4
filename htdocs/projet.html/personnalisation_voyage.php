@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    <link rel="stylesheet" href="projet.css/root.css">
    <link rel="stylesheet" href="projet.css/apart.css">
    <link rel="stylesheet" href="projet.css/voyages.css">
+   <link id="theme-css" rel="stylesheet" href="style-default.css">
 
    <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -99,7 +100,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 </script>
 </body>
-
+<select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
 
 
     <div class="navigation">
@@ -169,5 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br><br>
         </form>
     </div>
+       <script src="script_couleur.js"></script>
+
 </body>
 </html>
