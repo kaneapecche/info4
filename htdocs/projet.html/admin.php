@@ -12,11 +12,11 @@ $user_role = null;
 $users = [];
 
 // Charger les utilisateurs
-$fichier = 'donnees/utilisateurs.csv';
+$fichier = 'utilisateurs.csv';
 if (($handle = fopen($fichier, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
         if ($data[2] == $email) {
-            $user_role = $data[7]; // Rôle dans la colonne 8 (index 7)
+            $user_role = $data[8]; // Rôle dans la colonne 8 (index 7)
         }
         $users[] = $data;
     }
