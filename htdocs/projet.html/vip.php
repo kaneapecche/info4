@@ -25,13 +25,13 @@ $tel = $_SESSION['tel'];
     <title>Espace VIP - SereniTrip</title>
     <link rel="stylesheet" href="projet.css/root.css">
     <link rel="stylesheet" href="projet.css/apart.css">
-    <link id="theme-css" rel="stylesheet" href="style-default.css">
+    <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 </head>
 <body>
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
 <div class="navigation">
     <img src="image/logo.png" alt="logo du site web" width="100" class="image">
