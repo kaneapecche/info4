@@ -1,22 +1,53 @@
-<?php
-session_start();
+<?php 
+session_start(); 
 
-// Vérifier que l'utilisateur est connecté
-if (!isset($_SESSION['login'])) {
-    header('Location: connexion.php');
-    exit;
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['edit'])) {
+    $nouveau_nom = $_POST['nom'];
+    $nouveau_prenom = $_POST['prenom'];
+    $nouveau_email = $_POST['email'];
+    $nouveau_telephone = $_POST['telephone'];
+    $nouveau_birthday = $_POST['birthday'];
+    $nouveau_genre = $_POST['genre'];
+    $nouveau_password = $_POST['password'];
+
+    $fichier = 'donnees/utilisateurs.csv';
+    $temp_fichier = 'donnees/temp_utilisateurs.csv';
+    $modifie = false;
+
+    if (($handle = fopen($fichier, "r")) !== FALSE) {
+        $temp_handle = fopen($temp_fichier, "w");
+
+        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+            if ($data[2] == $_SESSION['email']) { 
+                $data[0] = $nouveau_nom;
+                $data[1] = $nouveau_prenom;
+                $data[2] = $nouveau_email;
+                $data[3] = $nouveau_telephone;
+                $data[5] = $nouveau_birthday;
+                $data[4] = $nouveau_genre;
+                $data[7] = $nouveau_password;
+                $modifie = true;
+            }
+            fputcsv($temp_handle, $data, ";");
+        }
+
+        fclose($handle);
+        fclose($temp_handle);
+
+        if ($modifie && filesize($temp_fichier) > 0) {
+            unlink($fichier);
+            rename($temp_fichier, $fichier);
+        } else {
+            unlink($temp_fichier);
+        }
+    }
+    $_SESSION['email'] = $nouveau_email;
+    header("Location: profil.php");
+    exit();
 }
-$nom = $_SESSION['nom'];
-$prenom = $_SESSION['prenom'];
-$email = $_SESSION['email'];
-$pseudo = $_SESSION['login'];
-$phone = $_SESSION['phone'];
-$birthday = $_SESSION['birthday'];
-$genre = $_SESSION['genre'];
-$date_inscription = $_SESSION['date_inscription'];
-$date_derniere_connexion = $_SESSION['date_derniere_connexion'];
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -42,101 +73,88 @@ $date_derniere_connexion = $_SESSION['date_derniere_connexion'];
             <?php if(isset($_SESSION["email"])): ?>
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="logout.php">Déconnexion</a></li>
-                <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "Admin"): ?>
-    <li><a href="admin.php">Admin</a></li>
-<?php endif; ?>
+                <?php if(isset($data[8]) && $data[8] == "admin"): ?>
+                    <li><a href="admin.php">Admin</a></li>
+                <?php endif; ?>
             <?php endif; ?>
         </ul>
         </div>
     </div>
     <br>
-    
-   <div class="container">
-       <fieldset class="center-form">
+    <?php 
+        if (!isset($_SESSION['email'])) {
+            header("Location: connexion.php");
+            exit();
+        }
+        
+        function getUserData($login) {
+            $fichier = 'donnees/utilisateurs.csv';
+            if (($handle = fopen($fichier, "r")) !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                    if ($data[2] == $login) {
+                        fclose($handle);
+                        return [
+                            'nom' => $data[0],
+                            'prenom' => $data[1],
+                            'email' => $data[2],
+                            'telephone' => $data[3],
+                            'date_de_naissance' => $data[4],
+                            'genre' => $data[5],
+                            'mot_de_passe' => $data[7],
+                            'role' => $data[8]
+                        ];
+                    }
+                }
+                fclose($handle);
+            }
+            return null;
+        }
+        
+        $user = getUserData($_SESSION['email']);
+        if (!$user) {
+            echo "Utilisateur non trouvé.";
+            exit();
+        }
+        $mode_edition = isset($_GET['edit']) && $_GET['edit'] == 'true';
+    ?>
+   <div class="container"><fieldset cvlass="center-form">
        <legend>Profil</legend>
-       <form action="modifier_profil.php" method="post">
+       <form action="profil.php?edit=true.php" method="post" >
            <label for="nom">Nom:</label>
-           <input class="fill" type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($nom); ?>" disabled>
-           <button type="button" onclick="enableEdit('nom')">Modifier</button>
+           <input class="fill" type="text"  id="nom" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" disabled>
+           <button class="button" type="button">✏️</button>
            <br/>
            <label for="prenom">Prenom:</label>
-           <input class="fill" type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($prenom); ?>" disabled>
-           <button type="button" onclick="enableEdit('prenom')">Modifier</button>
+           <input class="fill" type="text" id="prenom" name="prenom" value=<?= htmlspecialchars($user['prenom']) ?> disabled>
+           <button class="button" type="button">✏️</button>
            <br/>
            <label for="email">Adresse e-mail:</label>
-           <input class="fill" type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" disabled>
-           <button type="button" onclick="enableEdit('email')">Modifier</button>
-           <br/>
-           <label for="pseudo">Pseudo:</label>
-            <input class="fill" type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($pseudo); ?>" disabled><br>
-            <button type="button" onclick="enableEdit('pseudo')">Modifier</button>
-            <br/>
-           <label for="birthday">Date de naissance:</label>
-           <input type="date" id="birthday" name="birthday" value="<?php echo htmlspecialchars($birthday); ?>" disabled>
-           <button type="button" onclick="enableEdit('birthday')">Modifier</button>
+           <input class="fill" type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" disabled>
+           <button class="button" type="button">✏️</button>
            <br/><br/>
-           <label for="genre">Genre:</label><br>
-<input type="radio" name="genre" value="femme" <?php if ($genre == 'femme') echo 'checked'; ?>> Femme<br>
-<input type="radio" name="genre" value="homme" <?php if ($genre == 'homme') echo 'checked'; ?>> Homme<br>
-<button type="button" onclick="enableEdit('genre')">Modifier</button>
-<br/><br/>
-           <label for="telephone">Téléphone</label>
-           <input class="fill" type="tel" id="telephone" name="telephone" value="<?php echo htmlspecialchars($phone); ?>" disabled>
-           <button type="button" onclick="enableEdit('telephone')">Modifier</button>
+           <label for="birthday">Date de naissance:</label>
+           <input type="date" id="birthday" name="birthday" value="<?= htmlspecialchars($user['date_de_naissance']) ?>" disabled>
+           <button class="button" type="button">✏️</button>
+           <br/><br/>
+           <label for="genre">Genre:</label>
+           <input type="radio" name="genre" value="femme" <?= $user['genre'] == 'femme' ? 'checked' : '' ?> disabled>Femme
+           <input type="radio" name="genre" value="homme" <?= $user['genre'] == 'homme' ? 'checked' : '' ?> disabled>Homme
+           <button class="button" type="button">✏️</button>
+           <br/><br/>
+           <label for="phone">Téléphone</label>
+           <input class="fill" type="tel" id="phone" name="phone" value="<?= htmlspecialchars($user['telephone']) ?>" disabled>
+           <button class="button" type="button">✏️</button>
            <br/><br/>
            <label for="password">Mot de passe</label>
-<input class="fill" type="password" id="password" name="password" value="" disabled>
-<button type="button" onclick="enableEdit('password')">Modifier</button>
-<br/><br/>
-           <div id="save-buttons" style="display:none;">
-        <button type="submit">Enregistrer les modifications</button>
-        <button type="button" onclick="cancelEdit()">Annuler</button>
-        <button type="button" onclick="resetForm()">Réinitialiser</button>
-
-    </div>
+           <input class="fill" type="password" id="passeword" name="password" value="<?= htmlspecialchars($user['mot_de_passe']) ?>" disabled>
+           <button class="button" type="button">✏️</button>
+           <br/><br/>
+           <?php if (!$mode_edition): ?>
+               <a href="profil.php?edit=true" class="button">Modifier</a>
+           <?php else: ?>
+               <input type="submit" class="button" value="Enregistrer">
+           <?php endif; ?>
        </form>
-       </fieldset>
-   </div>
-   <script type="text/javascript">
-    let originalValues = {};
-
-    function enableEdit(fieldId) {
-    const field = document.getElementById(fieldId);
-    if (!originalValues[fieldId]) {
-        originalValues[fieldId] = field.value; // sauvegarde de la valeur initiale
-    }
-    field.disabled = false; // active le champ
-    document.getElementById('save-buttons').style.display = 'block'; // montre les boutons de sauvegarde
-}
-
-function cancelEdit() {
-    // Remet les champs à leur valeur d'origine
-    for (const id in originalValues) {
-        const field = document.getElementById(id);
-        field.value = originalValues[id];
-        field.disabled = true; // désactive les champs
-    }
-    originalValues = {};
-    document.getElementById('save-buttons').style.display = 'none'; // cache les boutons
-}
-function resetForm() {
-    const form = document.querySelector('form');
-    form.reset(); // remet les valeurs du formulaire à l'état initial (DOM)
-    
-    // Réinitialiser aussi les radios (genre)
-    const radios = document.querySelectorAll('input[type="radio"]');
-    radios.forEach(r => r.disabled = false);
-
-    // Réactiver tous les champs
-    const inputs = form.querySelectorAll('input');
-    inputs.forEach(input => {
-        input.disabled = false;
-    });
-
-    document.getElementById('save-buttons').style.display = 'block'; // montre les boutons
-}
-
-</script>
-
+   </fieldset></div>
 </body>
 </html>
