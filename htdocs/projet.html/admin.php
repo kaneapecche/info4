@@ -12,7 +12,7 @@ $user_role = null;
 $users = [];
 
 // Charger les utilisateurs
-$fichier = 'utilisateurs.csv';
+$fichier = 'donnees/utilisateurs.csv';
 if (($handle = fopen($fichier, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
         if ($data[2] == $email) {
@@ -38,6 +38,6 @@ $total_pages = ceil($total_utilisateurs / $utilisateurs_par_page);
 $start = ($page - 1) * $utilisateurs_par_page;
 $users_to_display = array_slice($users, $start + 1, $utilisateurs_par_page);
 
-// Appelle la vue
+// Inclusion du fichier de la vue de l'admin
 include 'admin_view.php';
 ?>
