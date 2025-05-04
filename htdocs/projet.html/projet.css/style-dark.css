@@ -1,0 +1,33 @@
+/* === MODE SOMBRE === */
+
+body {
+    background-color: #121212;
+    color: white;
+    font-size: 1rem;
+}
+
+.accueil-card {
+    background-color: #2b2b2b;
+    color: white;
+}
+
+button {
+    background-color: #444;
+    color: white;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+#theme-switcher {
+    background-color: rgb(128, 83, 83); /* Couleur de fond */
+    color: white; /* Texte blanc */
+    padding: 8px 15px; /* Espacement interne */
+    text-decoration: none; /* Pas de soulignement */
+    border-radius: 10px; /* Coins arrondis */
+    font-size: 16px; /* Taille du texte */
+    font-family: Arial, sans-serif; /* Police simple */
+    border: none; /* Retirer la bordure par défaut */
+    transition: background-color 0.3s ease; /* Transition pour la couleur de fond */
+  }
