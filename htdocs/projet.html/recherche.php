@@ -1,6 +1,6 @@
 <?php
 // Charger les voyages depuis le fichier JSON
-$json = file_get_contents('voyages.json');
+$json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
@@ -52,21 +52,21 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip - Recherche</title>
-   <link rel="stylesheet" href="root.css">
-   <link rel="stylesheet" href="login.css">
-   <link rel="stylesheet" href="voyage.css">
-   <link rel="stylesheet" href="apart.css">
-   <link id="theme-css" rel="stylesheet" href="style-default.css">
+   <link rel="stylesheet" href="projet.css/root.css">
+   <link rel="stylesheet" href="projet.css/login.css">
+   <link rel="stylesheet" href="projet.css/voyage.css">
+   <link rel="stylesheet" href="projet.css/apart.css">
+   <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 </head>
 <body>
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
 
 <div class="navigation">
-    <img src="logo.png" alt="logo du site web" width="100" class="image">
+    <img src="image/logo.png" alt="logo du site web" width="100" class="image">
     <div class="menu">
         <ul class="boutton">
             <li><a href="accueil.php">Accueil</a></li>
