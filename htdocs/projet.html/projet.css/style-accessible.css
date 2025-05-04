@@ -1,0 +1,37 @@
+/* === MODE ACCESSIBLE === */
+
+body {
+    font-size: 1.5rem;
+    font-family: Arial, sans-serif;
+    background-color: #b7acac; 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.accueil-card {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+button {
+    background-color: #1283a1;
+    color: white;
+}
+
+button:hover {
+    background-color: #3a6c80;
+}
+
+#theme-switcher {
+    background-color: rgb(128, 83, 83); /* Couleur de fond */
+    color: white; /* Texte blanc */
+    padding: 8px 15px; /* Espacement interne */
+    text-decoration: none; /* Pas de soulignement */
+    border-radius: 10px; /* Coins arrondis */
+    font-size: 16px; /* Taille du texte */
+    font-family: Arial, sans-serif; /* Police simple */
+    border: none; /* Retirer la bordure par défaut */
+    transition: background-color 0.3s ease; /* Transition pour la couleur de fond */
+  }
