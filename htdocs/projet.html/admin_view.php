@@ -16,7 +16,7 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
     <title>SereniTrip</title>
     <link rel="stylesheet" href="projet/root.css">
     <link rel="stylesheet" href="projet/apart.css">
-    <link rel="stylesheet" href="utilisateurs.css"> 
+    <link rel="stylesheet" href="projet/utilisateurs.css"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link id="theme-css" rel="stylesheet" href="projet/style-default.css">
 </head>
