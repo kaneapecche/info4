@@ -24,12 +24,12 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
 
 <body>
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet/style-default.css">Clair</option>
+  <option value="projet/style-dark.css">Sombre</option>
+  <option value="projet/style-accessible.css">Malvoyant</option>
 </select>
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
             <li><a href="accueil.php" class="button">Accueil</a></li>
