@@ -8,14 +8,8 @@
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <link rel="stylesheet" href="projet.css/root.css">
   <link rel="stylesheet" href="projet.css/apart.css">
-  <link id="theme-css" rel="stylesheet" href="style-default.css">
 </head>
 <body>
-  <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
-</select>
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
@@ -40,7 +34,7 @@
         <legend>Connexion</legend>
         <form action="traitement_connexion.php" method="post">
             <label for="email">Adresse e-mail:</label>
-            <input class="fill" type="email" name="email">
+            <input class="fill" type="text" name="email">
             <br>
             <label for="password">Mot de passe:</label>
             <input class="fill" type="password" name="password">
@@ -55,8 +49,20 @@
         </fieldset>
     </div>
     <br>
-    <script src="script_couleur.js"></script>
-
     
+    <script>
+const formConnexion = document.querySelector('form');
+
+formConnexion.addEventListener('submit', function(event) {
+    const email = formConnexion.querySelector('input[name="email"]').value.trim();
+    const password = formConnexion.querySelector('input[name="password"]').value.trim();
+
+    if (email === '' || password === '') {
+        event.preventDefault();
+        alert('Veuillez remplir tous les champs avant de vous connecter.');
+    }
+});
+</script>
+
 </body>
 </html>
