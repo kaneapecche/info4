@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nouveau_genre = $_POST['genre'];
     $nouveau_password = $_POST['password'];
 
-    $fichier = 'utilisateurs.csv';
-    $temp_fichier = 'temp_utilisateurs.csv';
+    $fichier = 'donnees/utilisateurs.csv';
+    $temp_fichier = 'donnees/temp_utilisateurs.csv';
     $modifie = false;
 
     if (($handle = fopen($fichier, "r")) !== FALSE) {
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function getUserData($email) {
-    $fichier = 'utilisateurs.csv';
+    $fichier = 'donnees/utilisateurs.csv';
     if (($handle = fopen($fichier, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
             if ($data[2] == $email) {
@@ -87,15 +87,15 @@ if (!$user) {
 <head>
    <meta charset="UTF-8">
    <title>Profil - SereniTrip</title>
-   <link rel="stylesheet" href="root.css">
-   <link rel="stylesheet" href="apart.css">
+   <link rel="stylesheet" href="projet.css/root.css">
+   <link rel="stylesheet" href="projet.css/apart.css">
    <style>
        .button { margin-left: 10px; }
    </style>
 </head>
 <body>
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
             <ul>
                 <li><a href="accueil.php" class="button">Accueil</a></li>
