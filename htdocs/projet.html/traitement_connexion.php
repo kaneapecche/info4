@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    $file = "utilisateurs.csv";
+    $file = "donnees/utilisateurs.csv";
 
     if (file_exists($file)) {
         $fp = fopen($file, "r");
