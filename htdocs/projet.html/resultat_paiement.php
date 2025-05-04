@@ -21,14 +21,14 @@ $control_calculé = md5($transaction_id . "#" . $montant . "#MI-1_A#" . $status 
     <title>Résultat du paiement</title>
     <link rel="stylesheet" href="projet.css/root.css">
     <link rel="stylesheet" href="projet.css/voyages.css">
-    <link id="theme-css" rel="stylesheet" href="style-default.css">
+    <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 
 </head>
 <body>
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
 <?php if ($status === "accepted") : ?>
     <h2>✅ Paiement validé !</h2>
