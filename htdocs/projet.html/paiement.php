@@ -61,13 +61,13 @@ $control = md5($transaction_id . "#" . $totalPrix . "#" . $vendeur . "#" . $reto
     <title>Paiement du voyage</title>
     <link rel="stylesheet" href="projet.css/root.css">
     <link rel="stylesheet" href="projet.css/voyages.css">
-    <link id="theme-css" rel="stylesheet" href="style-default.css">
+    <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 </head>
 <body>
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
 <h2>🛒 Récapitulatif du paiement</h2>
 <p><strong>Voyage :</strong> <?= htmlspecialchars($voyage['titre']); ?></p>
