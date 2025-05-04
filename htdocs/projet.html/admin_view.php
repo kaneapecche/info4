@@ -14,8 +14,8 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
 <head>
     <meta charset="UTF-8">
     <title>SereniTrip</title>
-    <link rel="stylesheet" href="projet.css/root.css">
-    <link rel="stylesheet" href="projet.css/apart.css">
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="apart.css">
     <link rel="stylesheet" href="utilisateurs.css"> <!-- ton nouveau css -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link id="theme-css" rel="stylesheet" href="style-default.css">
@@ -29,11 +29,11 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
   <option value="style-accessible.css">Malvoyant</option>
 </select>
     <div class="navigation">
-        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
             <li><a href="accueil.php" class="button">Accueil</a></li>
-            <li><a href="présentation.php">Destination</a></li>
+            <li><a href="presentation.php">Destination</a></li>
             <?php if (!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
             <?php else: ?>
@@ -62,9 +62,9 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
                 <td><?= htmlspecialchars($user[1]) ?></td> <!-- Prénom -->
                 <td><?= htmlspecialchars($user[2]) ?></td> <!-- Email -->
                 <td><?= htmlspecialchars($user[3]) ?></td> <!-- Téléphone -->
-                <td><?= htmlspecialchars($user[7]) ?></td> <!-- Rôle -->
+                <td><?= htmlspecialchars($user[8]) ?></td> <!-- Rôle -->
                 <td class="user-role" data-user-id="<?= htmlspecialchars($user[2]) ?>">
-    <?= htmlspecialchars($user[7]) ?>
+    <?= htmlspecialchars($user[8]) ?>
 </td>
 <td>
     <button class="action-btn" data-email="<?= htmlspecialchars($user[2]) ?>" title="Modifier">
