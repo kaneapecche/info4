@@ -43,7 +43,7 @@ $handle = fopen($fichier, 'a');
 $date_inscription = date('Y-m-d H:i:s');
 $date_derniere_connexion = $date_inscription; // Première connexion = inscription
 $ligne = [$nom, $prenom, $email, $phone, $genre, $birthday, $pseudo, $password, $role, $date_inscription, $date_derniere_connexion, ];
-fputcsv($handle, $ligne);
+fputcsv($handle, $ligne, ";");
 fclose($handle);
 
 // Rediriger vers profil
