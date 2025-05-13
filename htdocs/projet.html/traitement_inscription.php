@@ -1,63 +1,71 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ddd</title>
+</head>
+<body>
 <?php
-session_start();
+// Vérifier si des données ont bien été envoyées
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Récupération des données du formulaire
+    $nom = $_POST["nom"] ?? "";
+    $prenom = $_POST["prenom"] ?? "";
+    $email = $_POST["email"] ?? "";
+    $tel = $_POST["phone"] ?? "";
+    $birthday = $_POST["birthday"] ?? "";
+    $genre = $_POST["genre"] ?? "";
+    $login = $_POST["pseudo"] ?? "";
+    $password = $_POST["password"] ?? "";
 
-// Dossier où on stocke les utilisateurs
-$fichier = 'donnees/utilisateurs.csv';
+    // Ouvrir le fichier CSV
+    $file = "donnees/utilisateurs.csv";
+    $userExistant = false;
 
-// Récupérer les données du formulaire
-$nom = trim($_POST['nom']);
-$prenom = trim($_POST['prenom']);
-$email = trim($_POST['email']);
-$pseudo = trim($_POST['pseudo']);
-$birthday = trim($_POST['birthday']);
-$genre = trim($_POST['genre']);
-$phone = trim($_POST['phone']);
-$password = trim($_POST['password']);
-$role = 'Utilisateur';
+    $date_inscription = date("Y-m-d H:i:s"); // Date actuelle
+    $derniere_connexion = date("Y-m-d H:i:s"); // Mise à jour à chaque connexion
 
-// Validation simple
-if (empty($nom) || empty($prenom) || empty($email) || empty($pseudo) || empty($password)) {
-    die('Veuillez remplir tous les champs obligatoires.');
-}
 
-// Hacher le mot de passe pour la sécurité
-
-// Vérifier que l'utilisateur n'existe pas déjà (email OU pseudo)
-if (file_exists($fichier)) {
-    $handle = fopen($fichier, 'r');
-    while (($data = fgetcsv($handle, 1000, ';')) !== FALSE) {
-        if (
-            (isset($data[2]) && $data[2] == $email) || 
-            (isset($data[6]) && $data[6] == $pseudo)
-        ) {
-            fclose($handle);
-            die('Erreur : Un compte avec cet email ou ce pseudo existe déjà.');
-        }
-        
+    if (!file_exists($file)) {
+        touch($file); // Crée le fichier s'il n'existe pas
     }
-    fclose($handle);
+
+    $user = fopen($file, "a+"); // Ouverture en lecture et écriture
+    if ($user) {
+        // Lire et vérifier si l'utilisateur existe déjà
+        rewind($user); // Repositionner le curseur au début du fichier
+        fgetcsv($user, 10000, ';'); // Lire et ignorer la première ligne (l'en-tête)
+        while (($info = fgetcsv($user, 10000, ';')) !== false) {
+            if (count($info) < 9) continue; // Éviter les lignes incomplètes
+
+            if ($login === $info[6] || $email === $info[2] || $tel === $info[3]) {
+                $userExistant = true;
+                $info[8] = $derniere_connexion; // Mise à jour de la dernière connexion
+                header("Location: inscription.php");
+                break; // Pas besoin de continuer à lire
+            }
+        }
+
+        // Ajouter l'utilisateur s'il n'existe pas encore
+        if (!$userExistant) {
+            fputcsv($user, [$nom, $prenom, $email, $tel, $birthday, $genre, $login, $password, $date_inscription, $derniere_connexion], ';');
+        }
+
+        fclose($user);
+        $_SESSION["login"] = $login;
+        $_SESSION["email"] = $email;
+        $_SESSION["tel"] = $tel;
+    
+        // Redirection vers la page d'accueil ou le profil
+        header("Location: profil.php");
+        exit();
+    } else {
+        echo "Erreur lors de l'ouverture du fichier.";
+        header("Location: inscription.php");
+    }
 }
-
-// Enregistrer le nouvel utilisateur
-$handle = fopen($fichier, 'a');
-$date_inscription = date('Y-m-d H:i:s');
-$date_derniere_connexion = $date_inscription; // Première connexion = inscription
-$ligne = [$nom, $prenom, $email, $phone, $genre, $birthday, $pseudo, $password, $role, $date_inscription, $date_derniere_connexion, ];
-fputcsv($handle, $ligne, ";");
-fclose($handle);
-
-// Rediriger vers profil
-$_SESSION['login'] = $_POST['pseudo'];
-$_SESSION['nom'] = $_POST['nom'];
-$_SESSION['prenom'] = $_POST['prenom'];
-$_SESSION['email'] = $_POST['email'];
-$_SESSION['phone'] = $_POST['phone'];
-$_SESSION['birthday'] = $_POST['birthday'];
-$_SESSION['genre'] = $_POST['genre'];
-$_SESSION['date_inscription'] = date('Y-m-d H:i:s');
-$_SESSION['date_derniere_connexion'] = date('Y-m-d H:i:s');
-$_SESSION['role'] = $role;
-
-header('Location: profil.php');
-exit;
 ?>
+</body>
+</html>
