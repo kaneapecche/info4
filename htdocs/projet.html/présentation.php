@@ -1,13 +1,13 @@
 <?php
 // Charger les voyages depuis le fichier JSON
-$json = file_get_contents('donnees/voyages.json');
+$json = file_get_contents('voyages.json');
 $voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
 $titre = $_GET['titre'] ?? '';
 $date_arrivee = $_GET['date-arrivee'] ?? '';
 $date_depart = $_GET['date-depart'] ?? '';
-$options = isset($_GET['options']) ? $_GET['options'] : [];
+$options = isset($_GET['type']) ? $_GET['type'] : []; // Assurer que c'est un tableau même s'il est vide
 $personnes_supplementaires = $_GET['personnes'] ?? '';
 
 // Filtrage des voyages
@@ -16,7 +16,7 @@ foreach ($voyages as $voyage) {
     if (($titre === '' || stripos($voyage['titre'], $titre) !== false) &&
         ($date_arrivee === '' || $voyage['date_arrivee'] >= $date_arrivee) &&
         ($date_depart === '' || $voyage['date_depart'] <= $date_depart) &&
-        (empty($options) || !array_diff($options, $voyage['options'])) && 
+        (empty($options) || in_array($voyage['type'], $options)) && 
         ($personnes_supplementaires === '' || $voyage['personnes'] >= $personnes_supplementaires)) {
         $resultats[] = $voyage;
     }
@@ -37,18 +37,18 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
-   <link rel="stylesheet" href="projet.css/root.css">
-   <link rel="stylesheet" href="projet.css/login.css">
-   <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
+   <link rel="stylesheet" href="root.css">
+   <link rel="stylesheet" href="login.css">
+   <link id="theme-css" rel="stylesheet" href="style-default.css">
 </head>
 <body>
 <select id="theme-switcher">
-  <option value="projet.css/style-default.css">Clair</option>
-  <option value="projet.css/style-dark.css">Sombre</option>
-  <option value="projet.css/style-accessible.css">Malvoyant</option>
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
 </select>
     <div class="navigation">
-        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
             <ul class="boutton">
                 <li><a href="accueil.php">Accueil</a></li>
@@ -64,31 +64,16 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
             
     <!-- Formulaire de filtrage -->
     <form action="recherche.php" method="get">
-        <input type="text" name="titre" placeholder="Titre du voyage" value="<?= htmlspecialchars($titre) ?>"><br>
-        <label for="date-arrivee">Date d'arrivée</label>
-        <input type="date" name="date-arrivee" value="<?= htmlspecialchars($date_arrivee) ?>">
-        <label for="date-depart">Date de départ</label>
-        <input type="date" name="date-depart" value="<?= htmlspecialchars($date_depart) ?>"><br><br>
+        <input type="text" name="titre" placeholder="Titre du voyage" value="<?= htmlspecialchars($titre) ?>">
         <div>
-            <label for="options">Type de voyage</label>
-            <select id="options" name="type[]">
-                <option value="Bain" <?= in_array('Bain', $options) ? 'selected' : '' ?>>Bain</option>
-                <option value="Massage" <?= in_array('Massage', $options) ? 'selected' : '' ?>>Massage</option>
-                <option value="Relaxation" <?= in_array('Relaxation', $options) ? 'selected' : '' ?>>Relaxation</option>
-                <option value="Yoga" <?= in_array('Yoga', $options) ? 'selected' : '' ?>>Yoga</option>
-                <option value="Evasion" <?= in_array('Evasion', $options) ? 'selected' : '' ?>>Evasion</option>
-                <option value="Jacuzzi" <?= in_array('Jacuzzi', $options) ? 'selected' : '' ?>>Jacuzzi</option>
-                <option value="Plages" <?= in_array('Plages', $options) ? 'selected' : '' ?>>Plages</option>
-                <option value="Retraite" <?= in_array('Retraite', $options) ? 'selected' : '' ?>>Retraite</option>
-                <option value="Flottaison" <?= in_array('Flottaison', $options) ? 'selected' : '' ?>>Flottaison</option>
-                <option value="Sauna" <?= in_array('Sauna', $options) ? 'selected' : '' ?>>Sauna</option>
-                <option value="Hammam" <?= in_array('Hammam', $options) ? 'selected' : '' ?>>Hammam</option>
-                <option value="thalassothérapie" <?= in_array('thalassothérapie', $options) ? 'selected' : '' ?>>thalassothérapie</option>
-            </select>
-        </div><br>
-        <input type="number" name="personnes" placeholder="Personnes supplémentaires" value="<?= htmlspecialchars($personnes_supplementaires) ?>"><br><br>
-        <div class="tri">
-    <label for="tri">Trier par :</label>
+        <div>
+        <label for="options">Type de voyage :</label>
+        <select id="options" name="type[]">
+            <!-- Les options seront ajoutées dynamiquement via le script JavaScript -->
+        </select>
+    </div><br> 
+        <input type="number" name="personnes" placeholder="Personnes supplémentaires" value="<?= htmlspecialchars($personnes_supplementaires) ?>"><br>
+       <br>
     
 </div>
         <button type="submit">Filtrer</button>
@@ -100,17 +85,13 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
             <?php foreach ($voyages_limites as $index => $valeur) { ?>  
                 <div class="container">
                     <h4><?php echo htmlspecialchars($valeur['titre']); ?>– <?php echo htmlspecialchars($valeur['prix']); ?> Tout Compris ! ✨ </h4>
-                    <p><?php echo htmlspecialchars($valeur['texte']); ?></p>
-                    <p><?php echo htmlspecialchars($valeur['type']); ?></p>
-                    prix="<?= $valeur['prix']; ?>"
-                    date-arrivee="<?= $valeur['date-arrivee']; ?>"
-                    date-depart="<?= $valeur['date-depart']; ?>"
-                    duree="<?= $valeur['duree']; ?>"
-                    etapes="<?= count($valeur['etapes'] ?? []) ?>">
+                    <p><?php echo htmlspecialchars($valeur['texte']); ?></p><br>
+                    <p><?php echo htmlspecialchars($valeur['type']); ?></p><br>
+                    <br>
                     <span>
-                        <a href="voyages_details.php?id=<?php echo $offset + $index; ?>">
-                            <img src="<?php echo htmlspecialchars($valeur['image']); ?>" width="250" height="180" alt="<?php echo htmlspecialchars($valeur['titre']); ?>" />
-                        </a>
+                       <a href="voyages_details.php?id=<?php echo $offset + $index; ?>">
+                       <img src="<?php echo htmlspecialchars($valeur['image']); ?>" width="250" height="180" />
+                       </a>
                     </span>
                     
                 </div>
@@ -144,8 +125,42 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
 <br><br>
 
 <script src="script_couleur.js"></script>  
-   
-<script src="script_tri.js"></script>
 
+<!-- Ajoutez ce script dans le fichier presentation.php juste avant la balise </body> -->
+<script>
+    fetch('voyages.json')
+    .then(response => response.json())
+    .then(data => {
+        const optionsSelect = document.getElementById('options');
+        const typesVoyages = new Set(); // Utilise un Set pour éliminer les doublons
+
+        // Parcours chaque voyage et ajoute son type dans le Set
+        data.forEach(voyage => {
+            console.log("TYPE:", voyage.type);  // Vérifie que le type est bien récupéré
+            typesVoyages.add(voyage.type);
+        });
+
+        // Vide la liste des options existantes pour la mettre à jour
+        optionsSelect.innerHTML = '';
+
+        // Ajouter une option "Tous" en premier
+        const optionTous = document.createElement('option');
+        optionTous.value = '';
+        optionTous.textContent = 'Tous';
+        optionsSelect.appendChild(optionTous);
+
+        // Ajouter les types de voyages au select
+        typesVoyages.forEach(type => {
+            const optionElement = document.createElement('option');
+            optionElement.value = type;
+            optionElement.textContent = type;
+            optionsSelect.appendChild(optionElement);
+        });
+    })
+    .catch(error => {
+        console.error('Erreur de chargement des données JSON:', error);
+    });
+
+</script>
 </body>
 </html>
