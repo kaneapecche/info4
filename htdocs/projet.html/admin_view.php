@@ -1,4 +1,6 @@
 <?php
+
+
 // Redirige si le fichier est ouvert directement sans les variables nécessaires
 if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
     header('Location: admin.php');// Redirection vers admin.php
@@ -6,18 +8,19 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>SereniTrip</title>
-    <link rel="stylesheet" href="projet.css/root.css">
-    <link rel="stylesheet" href="projet.css/apart.css">
-    <link rel="stylesheet" href="projet.css/utilisateurs.css"> 
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="apart.css">
+    <link rel="stylesheet" href="utilisateurs.css"> 
     <!-- Icônes Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    !-- Style par défaut (modifiable avec le sélecteur de thème) -->
-    <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
+   
+    <link id="theme-css" rel="stylesheet" href="style-default.css">
 </head>
 <!-- Script de gestion de rôles utilisateur -->
 <script src="admin.js"></script>
@@ -25,18 +28,18 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
 <body>
     <!-- Sélecteur de thème (clair / sombre / accessible) -->
 <select id="theme-switcher">
-  <option value="projet.css/style-default.css">Clair</option>
-  <option value="projet.css/style-dark.css">Sombre</option>
-  <option value="projet.css/style-accessible.css">Malvoyant</option>
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
 </select>
 
 <!-- Barre de navigation principale -->
     <div class="navigation">
-        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
+        <img src="logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
             <li><a href="accueil.php" class="button">Accueil</a></li>
-            <li><a href="présentation.php">Destination</a></li>
+            <li><a href="presentation.php">Destination</a></li>
             <!-- Affichage conditionnel si connecté ou non -->
             <?php if (!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
@@ -137,5 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
+
 </body>
 </html>
