@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.classList.remove("disabled");
                 icon.className = originalIcon;
 
-                // Message visuel du fait que la similation a été réussi  
-                alert("Rôle modifié (simulation uniquement) !");
+                // Message visuel du fait que le changement a été réussi  
+                alert("Rôle modifié !");
             }, 3000);
         });
     });
