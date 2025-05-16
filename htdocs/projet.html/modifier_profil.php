@@ -1,41 +1,62 @@
+<?php 
+session_start(); 
+header('Content-Type: application/json');
 
-<?php
-session_start();
-if (!isset($_SESSION['login'])) {
-    header('Location: connexion.php');
-    exit;
+if (!isset($_SESSION["email"])) {
+    echo json_encode(['success' => false, 'message' => 'Non connecté']);
+    exit();
 }
 
-$login = $_SESSION['login'];
-$new_nom = $_POST['nom'];
-$new_prenom = $_POST['prenom'];
-$new_email = $_POST['email'];
-$new_phone = $_POST['phone'];
-$new_password = $_POST['password'];
-
-// Lecture de tous les utilisateurs
-$users = array_map('str_getcsv', file('donnees/utilisateurs.csv'));
-
-// Mise à jour
-foreach ($users as &$user) {
-    if ($user[6] === $login) { // 3 = pseudo
-        $user[0] = $new_nom;
-        $user[1] = $new_prenom;
-        $user[2] = $new_email;
-        $user[3] = $new_phone;
-        $user[7] = $new_password; // ATTENTION : ici tu pourrais hasher le mot de passe pour plus de sécurité
-        $user[10] = date('Y-m-d H:i:s'); // Mise à jour dernière modification
-        break;
+// Vérifie que toutes les données attendues sont présentes
+$champs_requis = ['nom', 'prenom', 'email', 'telephone', 'birthday', 'genre', 'password'];
+foreach ($champs_requis as $champ) {
+    if (empty($_POST[$champ])) {
+        echo json_encode(['success' => false, 'message' => "Champ manquant: $champ"]);
+        exit();
     }
 }
 
-// Réécriture du fichier CSV
-$file = fopen('donnees/utilisateurs.csv', 'w');
-foreach ($users as $user) {
-    fputcsv($file, $user);
-}
-fclose($file);
+$nouveau_nom = $_POST['nom'];
+$nouveau_prenom = $_POST['prenom'];
+$nouveau_email = $_POST['email'];
+$nouveau_telephone = $_POST['telephone'];
+$nouveau_birthday = $_POST['birthday'];
+$nouveau_genre = $_POST['genre'];
+$nouveau_password = $_POST['password'];
 
-header('Location: profil.php');
-exit;
-?>
+$fichier = 'donnees/utilisateurs.csv';
+$temp_fichier = 'donnees/temp_utilisateurs.csv';
+$modifie = false;
+
+if (($handle = fopen($fichier, "r")) !== FALSE) {
+    $temp_handle = fopen($temp_fichier, "w");
+
+    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+        if ($data[2] == $_SESSION['email']) {
+            $data[0] = $nouveau_nom;
+            $data[1] = $nouveau_prenom;
+            $data[2] = $nouveau_email;
+            $data[3] = $nouveau_telephone;
+            $data[4] = $nouveau_genre;
+            $data[5] = $nouveau_birthday;
+            $data[7] = $nouveau_password;
+            $modifie = true;
+        }
+        fputcsv($temp_handle, $data, ";");
+    }
+
+    fclose($handle);
+    fclose($temp_handle);
+
+    if ($modifie) {
+        unlink($fichier);
+        rename($temp_fichier, $fichier);
+        $_SESSION['email'] = $nouveau_email;
+        echo json_encode(['success' => true]);
+    } else {
+        unlink($temp_fichier);
+        echo json_encode(['success' => false, 'message' => 'Utilisateur non trouvé']);
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Erreur ouverture fichier']);
+}
