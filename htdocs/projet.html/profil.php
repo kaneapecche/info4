@@ -117,7 +117,7 @@ if (!$user) {
     <div class="container">
         <fieldset class="center-form">
             <legend>Profil</legend>
-            <form method="post">
+            <form id="profil-form">
                 <label for="nom">Nom:</label>
                 <input class="fill" type="text" id="nom" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" disabled>
                 <button type="button" onclick="enableEdit('nom')">✏️</button><br/>
@@ -148,46 +148,91 @@ if (!$user) {
                 <button type="button" onclick="enableEdit('password')">✏️</button><br/><br/>
 
                 <div id="save-buttons" style="display: none;">
-                    <input type="submit" class="button" value="Enregistrer">
-                    <button type="button" onclick="cancelEdit()">Annuler</button>
-                    <button type="button" onclick="resetForm()">Réinitialiser</button>
-                </div>
+        <button type="submit" class="button">Enregistrer</button>
+        <button type="button" onclick="cancelEdit()">Annuler</button>
+        <button type="button" onclick="resetForm()">Réinitialiser</button>
+    </div>
             </form>
         </fieldset>
     </div>
 
     <script>
-        let originalValues = {};
+    let originalValues = {};
 
-        function enableEdit(id) {
+    function enableEdit(id) {
+        const input = document.getElementById(id);
+        if (input) {
+            originalValues[id] = input.value;
+            input.disabled = false;
+        } else if (id === "genre") {
+            document.querySelectorAll('input[name="genre"]').forEach(radio => {
+                originalValues['genre'] = document.querySelector('input[name="genre"]:checked')?.value;
+                radio.disabled = false;
+            });
+        }
+        document.getElementById("save-buttons").style.display = "block";
+    }
+
+    function cancelEdit() {
+        for (let id in originalValues) {
             const input = document.getElementById(id);
             if (input) {
-                originalValues[id] = input.value;
-                input.disabled = false;
+                input.value = originalValues[id];
+                input.disabled = true;
             } else if (id === "genre") {
-                document.querySelectorAll('input[name="genre"]').forEach(radio => radio.disabled = false);
+                document.querySelectorAll('input[name="genre"]').forEach(radio => {
+                    radio.disabled = true;
+                    radio.checked = (radio.value === originalValues['genre']);
+                });
             }
-            document.getElementById("save-buttons").style.display = "block";
+        }
+        originalValues = {};
+        document.getElementById("save-buttons").style.display = "none";
+    }
+
+    function resetForm() {
+        document.querySelector("form").reset();
+        document.querySelectorAll("input").forEach(input => input.disabled = false);
+        document.getElementById("save-buttons").style.display = "block";
+    }
+
+    // 💡 Partie AJAX (Fetch API)
+    document.getElementById('profil-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Activer tous les champs désactivés temporairement pour les inclure dans FormData
+    const disabledFields = document.querySelectorAll('#profil-form input:disabled');
+    disabledFields.forEach(field => field.disabled = false);
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch('modifier_profil.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("Modification réussie !");
+            location.reload();
+        } else {
+            alert("Erreur : " + result.message);
+            cancelEdit();
         }
 
-        function cancelEdit() {
-            for (let id in originalValues) {
-                const input = document.getElementById(id);
-                if (input) {
-                    input.value = originalValues[id];
-                    input.disabled = true;
-                }
-            }
-            document.querySelectorAll('input[name="genre"]').forEach(radio => radio.disabled = true);
-            originalValues = {};
-            document.getElementById("save-buttons").style.display = "none";
-        }
+    } catch (error) {
+        console.error('Erreur lors de l’envoi :', error);
+        alert("Erreur réseau.");
+        cancelEdit();
+    } finally {
+        // Remettre en disabled les champs non modifiés (optionnel)
+        disabledFields.forEach(field => field.disabled = true);
+    }
+});
 
-        function resetForm() {
-            document.querySelector("form").reset();
-            document.querySelectorAll("input").forEach(input => input.disabled = false);
-            document.getElementById("save-buttons").style.display = "block";
-        }
-    </script>
+</script>
+
 </body>
 </html>
