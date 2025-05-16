@@ -61,6 +61,7 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
                 <th>Numéro de téléphone</th>
                 <th>Status</th>
                 <th><i class="fa-solid fa-pen"></i></th>  <!-- Colonne d'action -->
+                <th>Banir</th>
             </tr>
                 <!-- Affichage dynamique de chaque utilisateur -->
             <?php foreach ($users_to_display as $user): ?>
@@ -69,7 +70,7 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
                 <td><?= htmlspecialchars($user[1]) ?></td> <!-- Prénom -->
                 <td><?= htmlspecialchars($user[2]) ?></td> <!-- Email -->
                 <td><?= htmlspecialchars($user[3]) ?></td> <!-- Téléphone -->
-                <td><?= htmlspecialchars($user[8]) ?></td> <!-- Rôle -->
+               
                   <!-- Cellule spéciale utilisée par JS pour mise à jour du rôle -->
                 <td class="user-role" data-user-id="<?= htmlspecialchars($user[2]) ?>">
     <?= htmlspecialchars($user[8]) ?>
@@ -80,7 +81,14 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
         <i class="fa-solid fa-user-pen"></i>
     </button>
 </td>
-
+<td class="ban-status" data-user-id="<?= htmlspecialchars($user[2]) ?>">
+        <?= ($user[11] ?? 'non') === 'oui' ? '❌' : '' ?>
+    </td>
+    <td>
+        <button class="ban-btn" data-email="<?= htmlspecialchars($user[2]) ?>" title="Bannir/dé-bannir">
+            <i class="fa-solid fa-ban"></i>
+        </button>
+    </td>
             </tr>
             <?php endforeach; ?>
         </table>
@@ -139,6 +147,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+    // Script pour bannir/débannir
+    document.querySelectorAll(".ban-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const email = button.dataset.email;
+            const banCell = document.querySelector(`.ban-status[data-user-id="${email}"]`);
+            const isBanned = banCell.textContent.trim() === "❌";
+            const newBanStatus = isBanned ? "non" : "oui";
+
+            const icon = button.querySelector("i");
+            const originalIcon = icon.className;
+            icon.className = "fa fa-spinner fa-spin";
+            button.disabled = true;
+
+            fetch("admin_ban_user.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email, ban: newBanStatus })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    banCell.textContent = newBanStatus === "oui" ? "❌" : "";
+                } else {
+                    alert("Erreur : " + data.message);
+                }
+            })
+            .catch(error => {
+                alert("Erreur serveur : " + error.message);
+            })
+            .finally(() => {
+                icon.className = originalIcon;
+                button.disabled = false;
+            });
+        });
+    });
 </script>
 
 
