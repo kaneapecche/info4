@@ -2,7 +2,7 @@
 session_start();
 
 $id = $_GET['id'] ?? null;
-if (!$id) die("ID manquant.");
+
 
 // Supprimer de chaque tableau session
 if (isset($_SESSION['panier'])) {
