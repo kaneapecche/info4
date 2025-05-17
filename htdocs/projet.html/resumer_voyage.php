@@ -11,9 +11,6 @@ if (!$voyages) {
 
 $id_voyage = isset($_GET['id']) ? $_GET['id'] : null;
 
-if ($id_voyage === null) {
-    die("Erreur : Aucun ID reçu dans l'URL.");
-}
 
 
 $voyage = null;
@@ -67,7 +64,7 @@ $totalPrix = 0;
         
 <ul>
     <li><a href="accueil.php">Accueil</a></li>
-    <li><a href="présentation.php">Destination</a></li>
+    <li><a href="presentation.php">Destination</a></li>
 
     <?php if(!isset($_SESSION["login"])): ?>
         <li><a href="connexion.php">Connexion</a></li>
