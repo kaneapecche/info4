@@ -16,9 +16,9 @@
 </head>
 <body>
   <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
 
     <div class="navigation">
