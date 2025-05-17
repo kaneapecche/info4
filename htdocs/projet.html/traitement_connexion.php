@@ -16,13 +16,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fp = fopen($file, "r");
 
         while (($info = fgetcsv($fp, 10000, ';')) !== false) {
-            if (count($info) < 9) continue;
+            if (count($info) < 11) continue;
 
-            if ($info[2] === $email && $info[7] === $password) { // Email + mot de passe OK
-                $_SESSION["login"] = $info[6]; // Pseudo
+            if ($info[2] === $email && $info[7] === $password) {
+                if (strtolower(trim($info[11])) === "oui") {
+                    echo "⚠️ Votre compte a été banni. Vous ne pouvez pas accéder au site.";
+                    fclose($fp);
+                    exit();
+                }
+
+                $_SESSION["login"] = $info[6];
                 $_SESSION["email"] = $info[2];
                 $_SESSION["tel"] = $info[3];
-                $_SESSION["role"] = $info[8]; // <-- Ajout important
+                $_SESSION["role"] = $info[8];
 
                 // Mise à jour de la dernière connexion
                 $utilisateurs = file($file, FILE_IGNORE_NEW_LINES);
@@ -39,16 +45,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 fclose($fp_w);
                 fclose($fp);
 
+                // ✅ Redirection contextuelle si demandée
+                if (isset($_GET['redirect']) && !empty($_GET['redirect'])) {
+                    header("Location: " . $_GET['redirect']);
+                    exit();
+                }
+
                 // Redirection selon le rôle
                 switch ($info[7]) {
                     case "Admin":
                         header("Location: admin.php");
                         break;
                     case "VIP":
-                        header("Location: vip.php"); // remplace par la vraie page VIP
+                        header("Location: vip.php");
                         break;
                     default:
-                        header("Location: profil.php"); // utilisateur standard
+                        header("Location: profil.php");
                         break;
                 }
                 exit();
