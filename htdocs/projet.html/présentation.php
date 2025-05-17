@@ -137,7 +137,7 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
 
 
 <script>
-    fetch('voyages.json')
+    fetch('donnees/voyages.json')
     .then(response => response.json())
     .then(data => {
         const optionsSelect = document.getElementById('options');
