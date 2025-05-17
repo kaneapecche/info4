@@ -1,6 +1,10 @@
+
 <?php
 session_start();
-
+if (!isset($_SESSION["login"])) {
+    header("Location: connexion.php?redirect=personnalisation_voyage");
+    exit();
+}
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
@@ -10,9 +14,7 @@ if (!$voyages) {
 
 $id_voyage = isset($_GET['id']) ? $_GET['id'] : null;
 
-if ($id_voyage === null) {
-    die("Erreur : Aucun ID reçu dans l'URL.");
-}
+
 
 
 $voyage = null;
@@ -116,12 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
-         
+                <?php endif; ?>
 
-           
+                <?php if(isset($_SESSION["login"])): ?>
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="logout.php">Déconnexion</a></li>
-            <?php endif; ?>
+                <?php endif; ?>
         </ul>
         </div>
     </div>
