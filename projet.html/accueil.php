@@ -32,7 +32,7 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
    <div class="menu">
 <ul>
             <li><a href="accueil.php">Accueil</a></li>
-            <li><a href="presentation.php">Destination</a></li>
+            <li><a href="présentation.php">Destination</a></li>
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
             <?php endif; ?>
