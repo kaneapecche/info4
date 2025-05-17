@@ -112,10 +112,10 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
 
 
 <!-- Affichage des voyages filtrés avec pagination -->
-<div class="contained">
+<div class="accueil">
     <?php if (!empty($voyages_limites)) { ?>
         <?php foreach ($voyages_limites as $index => $valeur) { ?>  
-            <div class="container">
+            <div class="accueil-card">
                 <h4><?= htmlspecialchars($valeur['titre']); ?> – <?= htmlspecialchars($valeur['prix']); ?> Tout Compris ! ✨</h4>
                 <?= htmlspecialchars($valeur['texte']); ?>
                 <p><strong>Type :</strong> <?= htmlspecialchars($valeur['type']); ?></p>
