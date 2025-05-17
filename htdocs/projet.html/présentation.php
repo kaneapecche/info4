@@ -1,6 +1,8 @@
 <?php
+session_start(); // <-- indispensable
+
 // Charger les voyages depuis le fichier JSON
-$json = file_get_contents('voyages.json');
+$json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
 // Récupération des filtres soumis par l'utilisateur
@@ -37,24 +39,31 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>SereniTrip</title>
-   <link rel="stylesheet" href="root.css">
-   <link rel="stylesheet" href="login.css">
-   <link id="theme-css" rel="stylesheet" href="style-default.css">
+   <link rel="stylesheet" href="projet.css/root.css">
+   <link rel="stylesheet" href="projet.css/login.css">
+   <link rel="stylesheet" href="projet.css/profil.css">
+   <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 </head>
 <body>
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
             <ul class="boutton">
                 <li><a href="accueil.php">Accueil</a></li>
-                <li><a href="presentation.php">Destination</a></li>
+                <li><a href="présentation.php">Destination</a></li>
+                <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
+                <?php endif; ?>
+
+                <?php if(isset($_SESSION["login"])): ?>
                 <li><a href="profil.php">Profil</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
+                <?php endif; ?>
             </ul>
             
             </form><br/>
@@ -80,10 +89,10 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
     </form>
 
     <!-- Affichage des voyages filtrés avec pagination -->
-    <div class="contained">
+    <div class="accueil">
         <?php if (!empty($voyages_limites)) { ?>
             <?php foreach ($voyages_limites as $index => $valeur) { ?>  
-                <div class="container">
+                <div class="accueil-card">
                     <h4><?php echo htmlspecialchars($valeur['titre']); ?>– <?php echo htmlspecialchars($valeur['prix']); ?> Tout Compris ! ✨ </h4>
                     <p><?php echo htmlspecialchars($valeur['texte']); ?></p><br>
                     <p><?php echo htmlspecialchars($valeur['type']); ?></p><br>
@@ -126,7 +135,7 @@ $total_pages = ceil($total_voyages / $voyages_par_page);
 
 <script src="script_couleur.js"></script>  
 
-<!-- Ajoutez ce script dans le fichier presentation.php juste avant la balise </body> -->
+
 <script>
     fetch('voyages.json')
     .then(response => response.json())
