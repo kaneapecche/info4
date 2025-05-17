@@ -7,7 +7,7 @@ if (!$voyages) {
     die("Erreur : Impossible de charger les données des voyages.");
 }
 
-// Sélectionne 3 voyages pour la section "Voyages à la Une"
+
 $voyagesAlaUne = array_slice($voyages, 0, 5);
 ?>
 <!DOCTYPE html>
@@ -17,23 +17,21 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
 <link rel="stylesheet" href="projet.css/root.css">
 <link rel="stylesheet" href="projet.css/login.css">
 <link rel="stylesheet" href="projet.css/profil.css">
-<link id="theme-css" rel="stylesheet" href="style-default.css">
-
 <title> SereniTrip </title>
-<link rel="shortcut icon" href="image/logo.png" type="image/x-icon">
-
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+<link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 </head>
 <body bgcolor="#b7acac " text="'white" link="black">
 <select id="theme-switcher">
-  <option value="style-default.css">Clair</option>
-  <option value="style-dark.css">Sombre</option>
-  <option value="style-accessible.css">Malvoyant</option>
+  <option value="projet.css/style-default.css">Clair</option>
+  <option value="projet.css/style-dark.css">Sombre</option>
+  <option value="projet.css/style-accessible.css">Malvoyant</option>
 </select>
 <div class="navigation">
    <img src="image/logo.png" alt="logo du site web" width="100" class="image">
    <div class="menu">
 <ul>
-            <li><a href="accueil.php" class="button">Accueil</a></li>
+            <li><a href="accueil.php">Accueil</a></li>
             <li><a href="présentation.php">Destination</a></li>
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
@@ -62,9 +60,7 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
       <div class="accueil-card">
          <img src="<?php echo htmlspecialchars($voyage['image']); ?>" alt="Image de <?php echo htmlspecialchars($voyage['titre']); ?>" width="300">
          <h3><?php echo htmlspecialchars($voyage['titre']); ?></h3>
-         <p>
-            <?php echo isset($voyage['description']) ? htmlspecialchars($voyage['description']) : "Aucune description disponible."; ?>
-         </p>
+         
          <a href="personnalisation_voyage.php?id=<?php echo $voyage['id']; ?>">🌍 Voir plus</a>
       </div>
    <?php } ?>
@@ -74,8 +70,9 @@ $voyagesAlaUne = array_slice($voyages, 0, 5);
    <ul class="center-list">
       <li><a href="présentation.php">Commencez votre aventure dès maintenant !</a></li>
    </ul>
-  <script src="script_couleur.js"></script>
-
+  
+   <script src="script_couleur.js"></script>
+   
 </div>
 </body>
 </html>
