@@ -13,7 +13,7 @@ $user_role = null;
 $users = []; 
 
 
-$fichier = 'utilisateurs.csv';
+$fichier = 'donnees/utilisateurs.csv';
 
 if (($handle = fopen($fichier, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
