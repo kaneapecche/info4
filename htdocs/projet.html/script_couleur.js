@@ -22,14 +22,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const themeChoisi = lireCookie('theme'); // Lire le thème dans le cookie
 
     // Liste des feuilles de style valides
-    const themesValides = ['style-default.css', 'style-dark.css', 'style-accessible.css'];
+    const themesValides = ['projet.css/style-default.css', 'projet.css/style-dark.css', 'projet.css/style-accessible.css'];
 
     // Si un thème valide est trouvé dans le cookie, on l'applique
     if (themeChoisi && themesValides.includes(themeChoisi)) {
         fichierCSS.href = themeChoisi;
         selecteurTheme.value = themeChoisi;
     } else {
-        fichierCSS.href = 'style-default.css'; // Sinon, on applique le thème par défaut
+        fichierCSS.href = 'projet.css/style-default.css'; // Sinon, on applique le thème par défaut
     }
 
     // Quand l'utilisateur change le thème via le menu déroulant
