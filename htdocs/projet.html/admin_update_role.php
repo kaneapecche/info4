@@ -10,7 +10,7 @@ if (!isset($data['email']) || !isset($data['role'])) {
 
 $email = $data['email'];
 $newRole = $data['role'];
-$fichier = 'utilisateurs.csv';
+$fichier = 'donnees/utilisateurs.csv';
 
 $rows = [];
 $modifie = false;
