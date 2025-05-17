@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+if (!isset($_SESSION["login"])) {
+    $redirect = "voyages_details.php?id=" . urlencode($_GET['id'] ?? '');
+    header("Location: connexion.php?redirect=" . $redirect);
+    exit();
+}
+
+
 $json = file_get_contents('donnees/voyages.json');
 $voyages = json_decode($json, true);
 
@@ -10,9 +18,7 @@ if (!$voyages) {
 $id_voyage = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 
-if ($id_voyage === null) {
-    die(" Erreur : Aucun ID reçu dans l'URL.");
-}
+
 
 $voyage = null;
 foreach ($voyages as $v) {
@@ -54,9 +60,9 @@ if (!$voyage) {
 
             <?php if(!isset($_SESSION["login"])): ?>
                 <li><a href="connexion.php">Connexion</a></li>
-         
+                <?php endif; ?>
 
-           
+                <?php if(isset($_SESSION["login"])): ?>
                 <li><a href="profil.php">Profil</a></li>
                 <li><a href="logout.php">Déconnexion</a></li>
             <?php endif; ?>
