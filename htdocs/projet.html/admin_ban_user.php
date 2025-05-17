@@ -9,7 +9,7 @@ if (!isset($data['email']) || !isset($data['ban'])) {
 
 $email = $data['email'];
 $newBanStatus = $data['ban'];
-$fichier = 'utilisateurs.csv';
+$fichier = 'donnees/utilisateurs.csv';
 
 $rows = [];
 $modifie = false;
