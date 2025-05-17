@@ -2,9 +2,7 @@
 session_start();
 
 $id = $_GET['id'] ?? null;
-if (!$id) {
-    die("ID manquant.");
-}
+
 
 // Créer tableau de panier si pas encore fait
 if (!isset($_SESSION['panier'])) {
@@ -25,6 +23,10 @@ if (isset($_SESSION['personnalisation'][$id])) {
 if (isset($_SESSION['prix_personnalise'][$id])) {
     $_SESSION['prix_personnalise_panier'][$id] = $_SESSION['prix_personnalise'][$id];
 }
+
+// Rediriger vers le panier
+header("Location: panier.php");
+exit();
 
 // Rediriger vers le panier
 header("Location: panier.php");
