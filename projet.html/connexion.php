@@ -1,3 +1,8 @@
+<?php session_start(); ?>
+<?php if (isset($_GET['message']) && $_GET['message'] == "connecte_pour_reserver"): ?>
+    <p style="color: red; text-align: center;">⚠️ Vous devez vous connecter pour réserver un voyage.</p>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +18,17 @@
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
-            <li><a href="accueil.php">Accueil</a></li>
+            <li><a href="accueil.php" class="button">Accueil</a></li>
             <li><a href="présentation.php">Destination</a></li>
-            <li><a href="connexion.php">Connexion</a></li>
+
+            <?php if(!isset($_SESSION["login"])): ?>
+                <li><a href="connexion.php">Connexion</a></li>
+            <?php endif; ?>
+
+            <?php if(isset($_SESSION["login"])): ?>
+                <li><a href="profil.php">Profil</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
+            <?php endif; ?>
         </ul>
         </div>
     </div>
@@ -23,9 +36,10 @@
     <div class="container">
         <fieldset class="center-form">
         <legend>Connexion</legend>
-        <form action="td3.php" method="post">
+        <form action="traitement_connexion.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="post">
+
             <label for="email">Adresse e-mail:</label>
-            <input class="fill" type="email" name="email">
+            <input class="fill" type="text" name="email">
             <br>
             <label for="password">Mot de passe:</label>
             <input class="fill" type="password" name="password">
@@ -41,6 +55,19 @@
     </div>
     <br>
     
-    
+    <script>
+const formConnexion = document.querySelector('form');
+
+formConnexion.addEventListener('submit', function(event) {
+    const email = formConnexion.querySelector('input[name="email"]').value.trim();
+    const password = formConnexion.querySelector('input[name="password"]').value.trim();
+
+    if (email === '' || password === '') {
+        event.preventDefault();
+        alert('Veuillez remplir tous les champs avant de vous connecter.');
+    }
+});
+</script>
+
 </body>
 </html>
