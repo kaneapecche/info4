@@ -1,4 +1,8 @@
 <?php session_start(); ?>
+<?php if (isset($_GET['message']) && $_GET['message'] == "connecte_pour_reserver"): ?>
+    <p style="color: red; text-align: center;">⚠️ Vous devez vous connecter pour réserver un voyage.</p>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +12,15 @@
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <link rel="stylesheet" href="projet.css/root.css">
   <link rel="stylesheet" href="projet.css/apart.css">
+  <link id="theme-css" rel="stylesheet" href="projet.css/style-default.css">
 </head>
 <body>
+  <select id="theme-switcher">
+  <option value="style-default.css">Clair</option>
+  <option value="style-dark.css">Sombre</option>
+  <option value="style-accessible.css">Malvoyant</option>
+</select>
+
     <div class="navigation">
         <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
@@ -32,7 +43,8 @@
     <div class="container">
         <fieldset class="center-form">
         <legend>Connexion</legend>
-        <form action="traitement_connexion.php" method="post">
+        <form action="traitement_connexion.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="post">
+
             <label for="email">Adresse e-mail:</label>
             <input class="fill" type="text" name="email">
             <br>
@@ -63,6 +75,6 @@ formConnexion.addEventListener('submit', function(event) {
     }
 });
 </script>
-
+<script src="script_couleur.js"></script>
 </body>
 </html>
