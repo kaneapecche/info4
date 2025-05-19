@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $genre = $_POST["genre"] ?? "";
     $login = $_POST["pseudo"] ?? "";
     $password = $_POST["password"] ?? "";
-
+    $role = 'Utilisateur';
+    $banni = 'Non';
     // Ouvrir le fichier CSV
     $file = "donnees/utilisateurs.csv";
     $userExistant = false;
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Ajouter l'utilisateur s'il n'existe pas encore
         if (!$userExistant) {
-            fputcsv($user, [$nom, $prenom, $email, $tel, $birthday, $genre, $login, $password, $date_inscription, $derniere_connexion], ';');
+            fputcsv($user, [$nom, $prenom, $email, $tel, $genre, $birthday, $login, $password, $date_inscription, $derniere_connexion, $role, $banni], ';');
         }
 
         fclose($user);
