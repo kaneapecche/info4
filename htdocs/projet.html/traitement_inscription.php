@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Ajouter l'utilisateur s'il n'existe pas encore
         if (!$userExistant) {
-            fputcsv($user, [$nom, $prenom, $email, $tel, $genre, $birthday, $login, $password, $date_inscription, $derniere_connexion, $role, $banni], ';');
+            fputcsv($user, [$nom, $prenom, $email, $tel, $genre, $birthday, $login, $password, $role, $date_inscription, $derniere_connexion, $banni], ';');
         }
 
         fclose($user);
