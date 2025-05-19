@@ -35,7 +35,7 @@ if (!isset($users_to_display) || !isset($page) || !isset($total_pages)) {
 
 <!-- Barre de navigation principale -->
     <div class="navigation">
-        <img src="logo.png" alt="logo du site web" width="100" class="image">
+        <img src="image/logo.png" alt="logo du site web" width="100" class="image">
         <div class="menu">
         <ul>
             <li><a href="accueil.php" class="button">Accueil</a></li>
